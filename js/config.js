@@ -9,7 +9,7 @@ window.PortalKampus.CONFIG = {
   googleCalendar: {
     calendarId: '',
     apiKey: '',
-    oauthClientId: '',
+    oauthClientId: '251576873112-too02l0gc7k03j46ja7amn6gp43v5b5r.apps.googleusercontent.com',
     timeZone: 'Asia/Jakarta',
     maxResults: 100,
     cacheMinutes: 5
