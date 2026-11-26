@@ -56,7 +56,7 @@
 .event-card {
   display: flex;
   flex-direction: column;
-  background-color: black;
+  background-color: var(--surface-card);
   border: 1px solid var(--border-dark);
   border-radius: 5px;
   overflow: hidden;

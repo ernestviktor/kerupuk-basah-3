@@ -10,7 +10,8 @@
 
     color-scheme: light;
     
-    --sky-gradient: linear-gr
+    --sky-gradient: linear-gradient(
+    180deg,
     #1150ef 0%,
     #135af3 30%,
     #3c7af6 52%,
