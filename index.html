@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<!-- HEAD -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Event Kampus | Jadwal Seminar, Lomba, dan Kegiatan UKM</title>
+  <!-- Logo Website Kampus -->
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo-event-kampus.png">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Manrope:wght@400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css?v=3">
+  <link rel="stylesheet" href="css/layout.css?v=6">
+  <link rel="stylesheet" href="css/components.css?v=3">
+  <link rel="stylesheet" href="css/animation.css?v=3">
+</head>
+<!-- HEAD SELESAI --> 
+
+<!-- Aksesibilitas & pengalihan Bahasa  -->
+<body class="page-sky">
+  <a class="skip-link" href="#main-content">
+    <span class="lang-id">Lewati ke konten utama</span>
+    <span class="lang-en">Skip to main content</span>
+  </a>
+
+  <!-- Input radio tersembunyi untuk pengalih bahasa ID / EN -->
+  <input class="sr-only" type="radio" name="site-lang" id="lang-ba" checked>
+  <input class="sr-only" type="radio" name="site-lang" id="lang-en">
+
+  <!-- Empat garis grid vertikal latar belakang -->
+  <div class="grid-lines" aria-hidden="true">
+    <span class="grid-line grid-line--1"></span>
+    <span class="grid-line grid-line--2"></span>
+    <span class="grid-line grid-line--3"></span>
+    <span class="grid-line grid-line--4"></span>
+  </div>
+
+  <!-- HEADER AWAl -->
+  <header class="site-header">
+    <div class="wrap">
+      <div class="nav-shell">
+        <a class="brand-mark nav-item-anim nav-delay-1" href="index.html">
+            <img src="assets/img/logo-event-kampus.png" alt="Logo-Website" width="40px">
+        
+          <!-- Logo Website SVG Selesai-->
+
+          <span class="brand-mark__text">
+            <span class="brand-mark__title">
+              <span class="lang-id">Event Kampus</span>
+              <span class="lang-en">Campus Events</span>
+            </span>
+            <span class="brand-mark__sub">
+              <span class="lang-id">Portal Kegiatan</span>
+              <span class="lang-en">Activity Portal</span>
+            </span>
+          </span>
+        </a>
+
+        <nav class="nav-desktop" aria-label="Navigasi utama">
+          <a class="nav-link nav-link--active nav-item-anim nav-delay-2" href="index.html" aria-current="page">HOME</a>
+          <a class="nav-link nav-item-anim nav-delay-3" href="events.html">EVENT</a>
+          <a class="nav-link nav-item-anim nav-delay-4" href="calendar.html">
+            <span class="lang-id">KALENDER</span>
+            <span class="lang-en">CALENDAR</span>
+          </a>
+          <a class="nav-link nav-item-anim nav-delay-5" href="about.html">
+            <span class="lang-id">TENTANG</span>
+            <span class="lang-en">ABOUT</span>
+          </a>
+        </nav>
+
+        <div class="nav-actions nav-item-anim nav-delay-6">
+          <div class="lang-switch" role="group" aria-label="Pilih bahasa">
+            <label for="lang-ba">ID</label>
+            <label for="lang-en">EN</label>
+          </div>
+          <a class="btn-portal" href="events.html">
+            <span class="lang-id">Masuk</span>
+            <span class="lang-en">Enter</span>
+          </a>
+          <!-- Menu Navigasi DI HP -->
+          <label class="hamburger-btn" for="nav-drawer-toggle" aria-label="Buka menu navigasi">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16"/>
+            </svg>
+          </label>
+        </div>
+      </div>
+
+      <input class="nav-toggle-input" type="checkbox" id="nav-drawer-toggle" aria-label="Toggle menu">
+      <nav class="mobile-drawer" aria-label="Navigasi seluler">
+        <a class="nav-link--active" href="index.html" aria-current="page">HOME</a>
+        <a href="events.html">EVENT</a>
+        <a href="calendar.html">
+          <span class="lang-id">KALENDER</span>
+          <span class="lang-en">CALENDAR</span>
+        </a>
+        <a href="about.html">
+          <span class="lang-id">TENTANG</span>
+          <span class="lang-en">ABOUT</span>
+        </a>
+      </nav>
+    </div>
+    <!-- Menu Navigasi DI HP -->
+  </header>
+
+  <!-- HEADER AKHIR -->
+
+  <!-- SECTION EVENT UNGGULAN AKHIR -->
+  <main id="main-content">
+    <section class="hero-section">
+      <div class="wrap">
+        <div class="hero-top">
+          <h1 class="hero-title">
+            <span class="lang-id word-anim word-d1">AGENDA</span>
+            <span class="lang-id word-anim word-d2">EVENT</span>
+            <span class="lang-id word-anim word-d3">KAMPUS</span>
+            <span class="lang-id word-anim word-d4">TERKINI</span>
+            <span class="lang-en">LATEST</span>
+            <span class="lang-en">CAMPUS</span>
+            <span class="lang-en">EVENT</span>
+            <span class="lang-en">AGENDA</span>
+          </h1>
+          <div class="hero-side">
+            <p class="hero-tagline">
+              <span class="lang-id">Temukan seminar nasional, kompetisi inovasi, lokakarya mahasiswa, dan pentas seni UKM dalam satu jadwal yang teratur</span>
+              <span class="lang-en">Browse campus seminars, student competitions, hands-on workshops, and arts nights in one structured schedule</span>
+            </p>
+            <!-- R-08: Ikon panah menandakan navigasi langsung ke halaman daftar event -->
+            <a class="btn btn-primary" href="events.html">
+              <span class="lang-id">Lihat Event</span>
+              <span class="lang-en">Browse Events</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+<!-- GAMBAR UTAMA DIHOME -->
+        <figure class="hero-visual hero-visual-anim" style="height: 680px;">
+          <img
+            src="assets/img/fti-almamater.jpg"
+            alt="Gedung dan lingkungan Fakultas Teknologi Informasi UKSW"
+          >
+        </figure>
+      </div>
+    </section>
+    
+<!-- SECTION EVENT UNGGULAN AKHIR -->
+
+    <section class="content-section content-surface">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>
+              <span class="lang-id">Event Unggulan Minggu Ini</span>
+              <span class="lang-en">Featured Events This Week</span>
+            </h2>
+          </div>
+          <p>
+            <span class="lang-id">Tiga kegiatan pilihan dari fakultas dan unit kegiatan mahasiswa yang sedang membuka pendaftaran</span>
+            <span class="lang-en">Three selected campus activities currently open for student registration</span>
+          </p>
+        </div>
+
+        <div id="home-source-notice"></div>
+        <div id="home-events-state"></div>
+
+        <div class="event-grid featured-snap" id="featured-events-grid">
+          <article class="event-card card-anim card-d1">
+            <div class="event-card__media">
+              <img
+                src="assets/img/fti-event-720.jpg"
+                width="720"
+                height="40"
+                alt="Suasana seminar akademik dan diskusi mahasiswa di ruang kegiatan FTI UKSW"
+                loading="lazy"
+                decoding="async"
+                data-source="client"
+                data-subject="seminar"
+              >
+            </div>
+            <div class="event-card__body">
+              <div class="event-card__meta">
+                <span class="badge badge--cat">Seminar</span>
+                <span class="badge badge--open">
+                  <span class="lang-id">Pendaftaran Dibuka</span>
+                  <span class="lang-en">Open</span>
+                </span>
+              </div>
+              <h3 class="event-card__title">Seminar Nasional AI &amp; Etika Riset Mahasiswa</h3>
+              <div class="event-card__info">
+                <span>24 November 2026 &middot; 09.00 WIB</span>
+                <span>Auditorium Utama Kampus</span>
+              </div>
+              <div class="event-card__cta">
+                <a class="btn btn-outline" href="event-seminar-ai.html">
+                  <span class="lang-id">Buka Detail Event</span>
+                  <span class="lang-en">View Details</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="event-card card-anim card-d2">
+            <div class="event-card__media">
+              <img
+                src="assets/img/fti-workshop-ai-720.jpg"
+                width="720"
+                height="540"
+                alt="Kegiatan kolaborasi dan workshop teknologi informasi FTI UKSW"
+                loading="lazy"
+                decoding="async"
+                data-source="client"
+                data-subject="hackathon"
+              >
+            </div>
+            <div class="event-card__body">
+              <div class="event-card__meta">
+                <span class="badge badge--cat">Lomba</span>
+                <span class="badge badge--open">
+                  <span class="lang-id">Pendaftaran Dibuka</span>
+                  <span class="lang-en">Open</span>
+                </span>
+              </div>
+              <h3 class="event-card__title">Hackathon Inovasi Kampus 2026</h3>
+              <div class="event-card__info">
+                <span>28 November 2026 &middot; 08.30 WIB</span>
+                <span>Gedung Lab Komputer Terpadu</span>
+              </div>
+              <div class="event-card__cta">
+                <a class="btn btn-outline" href="event-hackathon-kampus.html">
+                  <span class="lang-id">Buka Detail Event</span>
+                  <span class="lang-en">View Details</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="event-card card-anim card-d3">
+            <div class="event-card__media">
+              <img
+                src="assets/img/fti-almamater-720.jpg"
+                width="720"
+                height="480"
+                alt="Kegiatan kemahasiswaan dan pelepasan jas almamater FTI UKSW"
+                loading="lazy"
+                decoding="async"
+                data-source="client"
+                data-subject="pentas-seni"
+              >
+            </div>
+            <div class="event-card__body">
+              <div class="event-card__meta">
+                <span class="badge badge--cat">Pentas Seni</span>
+                <span class="badge badge--soon">
+                  <span class="lang-id">Segera Hadir</span>
+                  <span class="lang-en">Coming Soon</span>
+                </span>
+              </div>
+              <h3 class="event-card__title">Malam Pentas Seni &amp; Musik UKM</h3>
+              <div class="event-card__info">
+                <span>5 Desember 2026 &middot; 18.00 WIB</span>
+                <span>Lapangan Terbuka Fakultas Seni</span>
+              </div>
+              <div class="event-card__cta">
+                <a class="btn btn-outline" href="event-pentas-seni.html">
+                  <span class="lang-id">Buka Detail Event</span>
+                  <span class="lang-en">View Details</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION KATEGORI EVENT KAMPUS -->
+    <section class="content-section content-muted">
+      <div class="wrap category-split">
+        <div class="category-intro">
+          <h2>
+            <span class="lang-id">Kategori Event Kampus</span>
+            <span class="lang-en">Campus Event Categories</span>
+          </h2>
+          <p>
+            <span class="lang-id">Saring jadwal kegiatan mahasiswa sesuai minat akademik, lomba, atau unit kegiatan</span>
+            <span class="lang-en">Filter student activities by academic seminars, competitions, or campus clubs</span>
+          </p>
+        </div>
+
+        <div class="category-list">
+          <a class="category-row" href="events.html?cat=seminar">
+            <span class="category-row__idx">01</span>
+            <div class="category-row__main">
+              <h3 class="category-row__title">Seminar</h3>
+              <p class="category-row__desc">
+                <span class="lang-id">Kuliah umum dan diskusi riset</span>
+                <span class="lang-en">Public lectures and research talks</span>
+              </p>
+            </div>
+            <span class="category-row__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </span>
+          </a>
+
+          <a class="category-row" href="events.html?cat=lomba">
+            <span class="category-row__idx">02</span>
+            <div class="category-row__main">
+              <h3 class="category-row__title">
+                <span class="lang-id">Lomba</span>
+                <span class="lang-en">Competitions</span>
+              </h3>
+              <p class="category-row__desc">
+                <span class="lang-id">Hackathon dan inovasi tim</span>
+                <span class="lang-en">Hackathons and team challenges</span>
+              </p>
+            </div>
+            <span class="category-row__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </span>
+          </a>
+
+          <a class="category-row" href="events.html?cat=workshop">
+            <span class="category-row__idx">03</span>
+            <div class="category-row__main">
+              <h3 class="category-row__title">Workshop</h3>
+              <p class="category-row__desc">
+                <span class="lang-id">Pelatihan praktik langsung</span>
+                <span class="lang-en">Hands-on technical sessions</span>
+              </p>
+            </div>
+            <span class="category-row__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </span>
+          </a>
+
+          <a class="category-row" href="events.html?cat=seni">
+            <span class="category-row__idx">04</span>
+            <div class="category-row__main">
+              <h3 class="category-row__title">
+                <span class="lang-id">Pentas Seni</span>
+                <span class="lang-en">Arts Night</span>
+              </h3>
+              <p class="category-row__desc">
+                <span class="lang-id">Musik, tari, dan teater UKM</span>
+                <span class="lang-en">Student music, dance, and stage</span>
+              </p>
+            </div>
+            <span class="category-row__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </span>
+          </a>
+
+          <a class="category-row" href="events.html?cat=ukm">
+            <span class="category-row__idx">05</span>
+            <div class="category-row__main">
+              <h3 class="category-row__title">UKM</h3>
+              <p class="category-row__desc">
+                <span class="lang-id">Pekan terbuka dan rekrutmen</span>
+                <span class="lang-en">Open week and club recruitment</span>
+              </p>
+            </div>
+            <span class="category-row__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION KATEGORI EVENT KAMPUS AKHIR-->
+
+    <!-- ALUR PENDAFTARAN -->
+    <section class="content-section content-surface">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>
+              <span class="lang-id">Alur Pendaftaran Event</span>
+              <span class="lang-en">How Registration Works</span>
+            </h2>
+          </div>
+          <p>
+            <span class="lang-id">Empat langkah berurutan dari memilih kegiatan hingga menyimpan jadwal ke kalender pribadi</span>
+            <span class="lang-en">Four sequential steps from picking an event to saving its schedule on your calendar</span>
+          </p>
+        </div>
+
+        <!-- FLOW PALING BELAKANG -->
+        <div class="flow-glass-panel">
+          <!-- FLOW MENDATAR -->
+          <div class="flow-timeline">
+            <!-- FLOW MENDATAR -->
+            <div class="flow-step">
+              <!-- FLOW MENDATAR -->
+              <div class="flow-step__head">
+                <!-- FLOW NUMBER -->
+                <span class="flow-step__num">01</span>
+              </div>
+              <h3 class="flow-step__title">
+                <span class="lang-id">Pilih Event</span>
+                <span class="lang-en">Pick an Event</span>
+              </h3>
+              <p class="flow-step__desc">
+                <span class="lang-id">Cari acara di halaman Event dan saring berdasarkan kategori</span>
+                <span class="lang-en">Browse the Events directory and filter by category</span>
+              </p>
+            </div>
+
+            <div class="flow-connector" aria-hidden="true">
+              <svg viewBox="0 0 36 20" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M2 10h28M23 4l7 6-7 6"/>
+              </svg>
+            </div>
+
+            <div class="flow-step">
+              <div class="flow-step__head">
+                <span class="flow-step__num">02</span>
+              </div>
+              <h3 class="flow-step__title">
+                <span class="lang-id">Isi Formulir</span>
+                <span class="lang-en">Fill the Form</span>
+              </h3>
+              <p class="flow-step__desc">
+                <span class="lang-id">Lengkapi nama, NIM, email kampus, dan nomor WhatsApp di halaman detail</span>
+                <span class="lang-en">Complete your name, student ID, campus email, and WhatsApp</span>
+              </p>
+            </div>
+
+            <div class="flow-connector" aria-hidden="true">
+              <svg viewBox="0 0 36 20" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M2 10h28M23 4l7 6-7 6"/>
+              </svg>
+            </div>
+
+            <div class="flow-step">
+              <div class="flow-step__head">
+                <span class="flow-step__num">03</span>
+              </div>
+              <h3 class="flow-step__title">
+                <span class="lang-id">Simpan Kalender</span>
+                <span class="lang-en">Save Calendar</span>
+              </h3>
+              <p class="flow-step__desc">
+                <span class="lang-id">Unduh file .ics atau tambahkan langsung ke Google Calendar</span>
+                <span class="lang-en">Download the .ics file or add straight to Google Calendar</span>
+              </p>
+            </div>
+
+            <div class="flow-connector" aria-hidden="true">
+              <svg viewBox="0 0 36 20" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M2 10h28M23 4l7 6-7 6"/>
+              </svg>
+            </div>
+
+            <div class="flow-step">
+              <div class="flow-step__head">
+                <span class="flow-step__num">04</span>
+              </div>
+              <h3 class="flow-step__title">
+                <span class="lang-id">Bagikan &amp; Hadir</span>
+                <span class="lang-en">Share &amp; Attend</span>
+              </h3>
+              <p class="flow-step__desc">
+                <span class="lang-id">Ajak rekan sekelas via WhatsApp dan datang sesuai jadwal rundown</span>
+                <span class="lang-en">Invite classmates via WhatsApp and arrive on schedule</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ALUR PENDAFTARAN AKHIR-->
+
+    <!-- GALERI DOKUMENTASI -->
+    <section class="content-section content-muted">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>
+              <span class="lang-id">Dokumentasi &amp; Sorotan Kampus</span>
+              <span class="lang-en">Campus Highlights &amp; Gallery</span>
+            </h2>
+          </div>
+          <p>
+            <span class="lang-id">Potret kegiatan mahasiswa dan pencapaian Fakultas Teknologi Informasi UKSW</span>
+            <span class="lang-en">Snapshots of student activities and achievements at FTI UKSW</span>
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-frame">
+            <img
+              src="assets/img/fti-campus-640.jpg"
+              width="640"
+              height="480"
+              alt="Peserta kegiatan bersama dosen FTI UKSW di ruang aula"
+              loading="lazy"
+              decoding="async"
+              data-source="client"
+              data-subject="galeri-fti-1"
+            >
+          </figure>
+          <figure class="gallery-frame">
+            <img
+              src="assets/img/ig-fti-1.jpg"
+              width="640"
+              height="640"
+              alt="Mahasiswa FTI UKSW peraih penghargaan pada seminar dan kompetisi PURE 26"
+              loading="lazy"
+              decoding="async"
+              data-source="client"
+              data-subject="galeri-fti-2"
+            >
+          </figure>
+          <figure class="gallery-frame">
+            <img
+              src="assets/img/fti-attention.jpg"
+              width="600"
+              height="400"
+              alt="Aktivitas mahasiswa dan pembinaan di lingkungan kampus FTI UKSW"
+              loading="lazy"
+              decoding="async"
+              data-source="client"
+              data-subject="galeri-fti-3"
+            >
+          </figure>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERI DOKUMENTASI AKHIR-->
+
+    <!-- TENTANG PENGEMBANG -->
+    <section class="content-section content-surface" id="tentang">
+      <div class="wrap">
+        <article class="detail-panel team-panel">
+          <h1 class="footer-main-title">
+            <span class="lang-id">Tim Developer</span>
+            <span class="lang-en">Developer Team</span>
+          </h1>
+          <h2 class="footer-title">
+            <span class="lang-id">Kelompok Kerupuk Basah - 3</span>
+            <span class="lang-en">Kelompok Kerupuk Basah - 3</span>
+          </h2>
+          <p>
+            <span class="lang-id">Website ini disusun untuk Tugas PTI Pembuatan Web menggunakan HTML, CSS, dan Vanilla JavaScript yang terintegrasi dengan Google Calendar.</span>
+            <span class="lang-en">This website was developed for the PTI Web Development assignment using HTML, CSS, and Vanilla JavaScript integrated with Google Calendar.</span>
+          </p>
+
+          <div class="member-grid">
+            <div class="member-card">
+              <div class="member-card__body">
+                <div class="member-card__info">
+                  <p class="member-card__role">
+                    <span class="lang-id">Admin Panel &amp; Kalender</span>
+                    <span class="lang-en">Admin Panel &amp; Calendar</span>
+                  </p>
+                  <h3 class="member-card__name">Agaphe Abel</h3>
+                  <p class="member-card__nim">NIM: 672026084</p>
+                </div>
+                <a class="linkedin-link" href="https://www.linkedin.com/in/agaphe-abel?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener" aria-label="Buka profil LinkedIn Agaphe Abel">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z"/>
+                  </svg>
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+              <div class="member-card__media">
+                <img class="member-card__photo" src="assets/img/Abel.png" alt="Foto profil Agaphe Abel" width="96" height="118" loading="lazy">
+              </div>
+            </div>
+
+            <div class="member-card">
+              <div class="member-card__body">
+                <div class="member-card__info">
+                  <p class="member-card__role">
+                    <span class="lang-id">Event</span>
+                    <span class="lang-en">Events</span>
+                  </p>
+                  <h3 class="member-card__name">Reza Dwi Saputra</h3>
+                  <p class="member-card__nim">NIM: 672026080</p>
+                </div>
+                <a class="linkedin-link" href="https://www.linkedin.com/in/reza-dwi-765418450" target="_blank" rel="noopener" aria-label="Buka profil LinkedIn Reza Dwi Saputra">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z"/>
+                  </svg>
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+              <div class="member-card__media">
+                <img class="member-card__photo" src="assets/img/Reza.png" alt="Foto profil Reza Dwi Saputra" width="96" height="118" loading="lazy">
+              </div>
+            </div>
+
+            <div class="member-card">
+              <div class="member-card__body">
+                <div class="member-card__info">
+                  <p class="member-card__role">Home & GitHub</p>
+                  <h3 class="member-card__name">Ernest Limbong</h3>
+                  <p class="member-card__nim">NIM: 672026071</p>
+                </div>
+                <a class="linkedin-link" href="https://www.linkedin.com/in/ernest-viktor-syampe-limbong-958030378" target="_blank" rel="noopener" aria-label="Buka profil LinkedIn Ernest Limbong">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z"/>
+                  </svg>
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+              <div class="member-card__media">
+                <img class="member-card__photo" src="assets/img/Ernest.jpeg" alt="Foto profil Ernest Limbong" width="96" height="118" loading="lazy">
+              </div>
+            </div>
+
+            <div class="member-card">
+              <div class="member-card__body">
+                <div class="member-card__info">
+                  <p class="member-card__role">
+                    <span class="lang-id">Tentang &amp; Kontak</span>
+                    <span class="lang-en">About &amp; Contact</span>
+                  </p>
+                  <h3 class="member-card__name">Wellprina Grace</h3>
+                  <p class="member-card__nim">NIM: 672026085</p>
+                </div>
+                <a class="linkedin-link" href="https://www.linkedin.com/in/welprina-grace-modole-undefined-25691444a?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener" aria-label="Buka profil LinkedIn Wellprina Grace">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z"/>
+                  </svg>
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+              <div class="member-card__media">
+                <img class="member-card__photo" src="assets/img/Grace.png" alt="Foto profil Wellprina Grace" width="96" height="118" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <dl class="info-dl" style="margin-top: 24px;">
+            <div>
+              <dt>
+                <span class="lang-id">Email Panitia</span>
+                <span class="lang-en">Committee Email</span>
+              </dt>
+              <dd><a href="mailto:panitia@eventkampus.example">panitia@eventkampus.example</a></dd>
+            </div>
+          </dl>
+          <p class="placeholder-note">
+            <span class="lang-id">[DATA CONTOH] Alamat email .example adalah placeholder untuk demo tugas.</span>
+            <span class="lang-en">[SAMPLE DATA] The .example email address is a placeholder for project demo.</span>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Ajakan Panitia & Akses Kalender -->
+    <section class="cta-band">
+      <div class="wrap">
+        <div class="cta-grid">
+          <div>
+            <h2 class="footer-title">
+              <span class="lang-id">Rencanakan Jadwal Kuliah dan Kegiatan UKM Lebih Awal</span>
+              <span class="lang-en">Plan Your Academic and Student Club Schedule Ahead</span>
+            </h2>
+            <p>
+              <span class="lang-id">Buka kalender bulanan untuk melihat tanggal penting atau simpan agenda langsung ke Google Calendar</span>
+              <span class="lang-en">Check the monthly calendar for key dates or export any event straight to Google Calendar</span>
+            </p>
+          </div>
+          <div>
+            <a class="btn btn-accent" href="calendar.html">
+              <span class="lang-id">Buka Kalender Event</span>
+              <span class="lang-en">Open Event Calendar</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+<!-- TENTANG PENGEMBANG AKHIR-->
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="assets/img/logo-event-kampus.png" alt="Logo-Website" width="40px">
+            <div class="brand-mark__text">
+              <span class="brand-mark__title"><span class="lang-id">Event Kampus</span><span class="lang-en">Campus Events</span></span>
+              <span class="brand-mark__sub"><span class="lang-id">Portal Kegiatan</span><span class="lang-en">Activity Portal</span></span>
+            </div>
+          </div>
+          <p>
+            <span class="lang-id">Dikembangkan oleh Kelompok Kerupuk Basah - 3 (Tugas PTI Pembuatan Web) menggunakan HTML, CSS, dan Vanilla JavaScript dengan sinkronisasi Google Calendar.</span>
+            <span class="lang-en">Built by Kelompok Kerupuk Basah - 3 with HTML, CSS, and Vanilla JavaScript synced with Google Calendar.</span>
+          </p>
+        </div>
+        <div>
+          <p class="footer-heading">Navigasi</p>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Daftar Event</a></li>
+            <li><a href="calendar.html">Kalender Bulanan</a></li>
+            <li><a href="about.html">Tentang &amp; Kontak</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-heading">Kontak &amp; LinkedIn</p>
+          <ul class="footer-links">
+            <li><a href="about.html#anggota">Agaphe Abel - Projek Leader</a></li>
+            <li><a href="about.html#anggota">Reza Dwi Saputra - Web Develop</a></li>
+            <li><a href="about.html#anggota">Ernest Viktor Syampe Limbong - System Analyst</a></li>
+            <li><a href="about.html#anggota">Welprina Grace Modole - Auditor &amp; Visual Designer</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Portal Event Kampus &middot; Kerupuk Basah - 3</span>
+        <span>Aset foto non-logo dari <a href="https://fti.uksw.edu/" target="_blank" rel="noopener">fti.uksw.edu</a> &amp; <a href="https://www.instagram.com/fti.uksw/" target="_blank" rel="noopener">@fti.uksw</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="js/config.js"></script>
+  <script defer src="js/fallback-events.js"></script>
+  <script defer src="js/ics-helper.js"></script>
+  <script defer src="js/calendar-service.js"></script>
+  <script defer src="js/ui-common.js"></script>
+  <script defer src="js/page-home.js"></script>
+</body>
+</html>

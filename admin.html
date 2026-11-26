@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Penjadwalan Google Calendar | Portal Event Kampus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo-event-kampus.png">
+  <meta name="description" content="Halaman pembantu admin untuk menyusun event baru, pratinjau kartu, dan mengirim jadwal langsung ke Google Calendar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Manrope:wght@400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animation.css">
+</head>
+<body class="page-sky">
+  <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
+
+  <input class="sr-only" type="radio" name="site-lang" id="lang-ba" checked>
+  <input class="sr-only" type="radio" name="site-lang" id="lang-en">
+
+  <div class="grid-lines" aria-hidden="true">
+    <span class="grid-line grid-line--1"></span>
+    <span class="grid-line grid-line--2"></span>
+    <span class="grid-line grid-line--3"></span>
+    <span class="grid-line grid-line--4"></span>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <div class="nav-shell">
+        <a class="brand-mark" href="index.html">
+          <img src="assets/img/logo-event-kampus.png" alt="Logo-Website" width="40px">
+          <span class="brand-mark__text">
+            <span class="brand-mark__title">
+              <span class="lang-id">Event Kampus</span>
+              <span class="lang-en">Campus Events</span>
+            </span>
+            <span class="brand-mark__sub">
+              <span class="lang-id">Portal Kegiatan</span>
+              <span class="lang-en">Activity Portal</span>
+            </span>
+          </span>
+        </a>
+
+        <nav class="nav-desktop" aria-label="Navigasi utama">
+          <a class="nav-link" href="index.html">HOME</a>
+          <a class="nav-link" href="events.html">EVENT</a>
+          <a class="nav-link" href="calendar.html">
+            <span class="lang-id">KALENDER</span>
+            <span class="lang-en">CALENDAR</span>
+          </a>
+          <a class="nav-link" href="about.html">
+            <span class="lang-id">TENTANG</span>
+            <span class="lang-en">ABOUT</span>
+          </a>
+        </nav>
+
+        <div class="nav-actions">
+          <div class="lang-switch" role="group" aria-label="Pilih bahasa">
+            <label for="lang-ba">ID</label>
+            <label for="lang-en">EN</label>
+          </div>
+          <a class="btn-portal" href="calendar.html">
+            <span class="lang-id">Lihat Kalender</span>
+            <span class="lang-en">View Calendar</span>
+          </a>
+          <label class="hamburger-btn" for="nav-drawer-toggle" aria-label="Buka menu navigasi">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16"/>
+            </svg>
+          </label>
+        </div>
+      </div>
+
+      <input class="nav-toggle-input" type="checkbox" id="nav-drawer-toggle" aria-label="Toggle menu">
+      <nav class="mobile-drawer" aria-label="Navigasi seluler">
+        <a href="index.html">HOME</a>
+        <a href="events.html">EVENT</a>
+        <a href="calendar.html"><span class="lang-id">KALENDER</span><span class="lang-en">CALENDAR</span></a>
+        <a href="about.html"><span class="lang-id">TENTANG</span><span class="lang-en">ABOUT</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="admin-auth-gate" id="admin-auth-gate" aria-labelledby="admin-auth-heading">
+      <div class="wrap">
+        <article class="detail-panel admin-auth-card">
+          <span class="badge badge--cat">Akses Khusus Pengurus &middot; Google SSO</span>
+          <h1 class="admin-auth-card__title" id="admin-auth-heading">Masuk Panel Admin</h1>
+          <p class="table-sub" id="admin-auth-desc">Masuk menggunakan akun Google yang terdaftar sebagai pengelola untuk membuka kalender penjadwalan, pengelola thumbnail event, dan sinkronisasi Google Calendar.</p>
+
+          <div id="admin-auth-error" class="admin-feedback" role="alert"></div>
+
+          <div class="admin-actions-row">
+            <button type="button" class="btn btn-accent" id="admin-sso-login-btn">Masuk dengan Google</button>
+            <button type="button" class="btn btn-outline" id="admin-sso-select-btn">Pilih Akun Google Lain</button>
+            <a class="btn btn-outline" href="index.html">Kembali ke Beranda</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div id="admin-workspace-shell" hidden>
+    <section class="page-banner">
+      <div class="wrap">
+        <h1>
+          <span class="lang-id">Admin Penjadwalan Event</span>
+          <span class="lang-en">Event Scheduling Admin</span>
+        </h1>
+        <p>
+          <span class="lang-id">Isi rincian event di bawah untuk membuka form Google Calendar yang sudah terformat otomatis, pratinjau tampilan kartu, dan cek status sinkronisasi portal.</span>
+          <span class="lang-en">Fill in event details below to open a pre-formatted Google Calendar draft, preview the portal card, and inspect live sync status.</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section content-surface" id="admin-calendar-section">
+      <div class="wrap">
+        <div class="admin-status-card" id="admin-status-summary" role="status" aria-live="polite">
+          Memeriksa status koneksi Google Calendar...
+        </div>
+
+        <div class="section-head">
+          <div>
+            <h2>Kalender Penjadwalan Interaktif</h2>
+          </div>
+          <p>Seret di grid jam untuk membuat event baru, geser kartu untuk pindah jadwal, atau tarik tepi bawah untuk ubah durasi.</p>
+        </div>
+
+        <div id="admin-toast" class="admin-toast" role="status" aria-live="polite" hidden></div>
+        <div id="admin-timeline-mount"></div>
+      </div>
+    </section>
+
+    <section class="content-section content-muted" id="admin-full-form-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Detail Lengkap &amp; Pratinjau Kartu Portal</h2>
+          </div>
+          <p>Lengkapi informasi opsional seperti poster, rundown, biaya, kontak panitia, dan link pendaftaran eksternal.</p>
+        </div>
+
+        <div class="admin-workspace">
+          <article class="detail-panel">
+            <h3 class="footer-title" id="admin-form-heading">Buat &amp; Kirim Jadwal ke Google Calendar</h3>
+            <p class="table-sub">Panitia dapat mengisi jadwal langsung ke Google Calendar lewat sesi OAuth 2.0, atau memakai tombol template saat belum login.</p>
+
+            <div id="admin-edit-banner" class="admin-edit-banner" role="status" aria-live="polite"></div>
+
+            <form class="reg-form" id="admin-event-form" novalidate>
+              <div class="form-field">
+                <label for="adm-title">Judul Event *</label>
+                <input id="adm-title" name="title" type="text" required placeholder="Contoh: Seminar Keamanan Siber Kampus">
+              </div>
+
+              <div class="admin-form-grid">
+                <div class="form-field">
+                  <label for="adm-category">Kategori</label>
+                  <select id="adm-category" name="category"></select>
+                </div>
+                <div class="form-field">
+                  <label for="adm-status">Status Pendaftaran</label>
+                  <select id="adm-status" name="status">
+                    <option value="open">Pendaftaran Dibuka</option>
+                    <option value="soon">Segera Hadir</option>
+                    <option value="closed">Selesai</option>
+                  </select>
+                </div>
+              </div>
+
+              <label class="admin-check-row" for="adm-allday">
+                <input id="adm-allday" type="checkbox">
+                <span>Acara sepanjang hari (tanpa jam spesifik)</span>
+              </label>
+
+              <div class="admin-form-grid">
+                <div class="form-field">
+                  <label for="adm-start-date">Tanggal Mulai *</label>
+                  <input id="adm-start-date" type="date" required>
+                </div>
+                <div class="form-field">
+                  <label for="adm-start-time">Jam Mulai</label>
+                  <input id="adm-start-time" type="time">
+                </div>
+                <div class="form-field">
+                  <label for="adm-end-date">Tanggal Selesai *</label>
+                  <input id="adm-end-date" type="date" required>
+                </div>
+                <div class="form-field">
+                  <label for="adm-end-time">Jam Selesai</label>
+                  <input id="adm-end-time" type="time">
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="adm-location">Lokasi Kegiatan</label>
+                <input id="adm-location" type="text" placeholder="Contoh: Auditorium Utama FTI">
+              </div>
+
+              <div class="form-field">
+                <label for="adm-description">Deskripsi Singkat Acara</label>
+                <textarea id="adm-description" rows="3" placeholder="Jelaskan ringkasan acara, pembicara, atau sasaran peserta"></textarea>
+              </div>
+
+              <div class="admin-form-grid">
+                <div class="form-field">
+                  <label for="adm-fee">Biaya (opsional)</label>
+                  <input id="adm-fee" type="text" placeholder="Contoh: Gratis untuk mahasiswa">
+                </div>
+                <div class="form-field">
+                  <label for="adm-contact">Kontak Panitia (opsional)</label>
+                  <input id="adm-contact" type="text" placeholder="Contoh: panitia@kampus.ac.id">
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="adm-daftar">Link Pendaftaran Google Form / Eksternal (opsional)</label>
+                <input id="adm-daftar" type="url" placeholder="https://forms.gle/...">
+              </div>
+
+              <div class="form-field admin-poster-box" id="adm-poster-section">
+                <label for="adm-poster-custom">Thumbnail &amp; Poster Event (opsional)</label>
+                <div class="admin-poster-current">
+                  <img id="adm-poster-preview-img" class="admin-poster-current__img" src="assets/img/fti-event-720.jpg" alt="Pratinjau thumbnail event" width="96" height="68">
+                  <div class="admin-poster-current__info">
+                    <span id="adm-poster-preview-label" class="admin-poster-current__label">Mengikuti default kategori</span>
+                    <span class="table-sub">Pilih foto galeri di bawah atau tempel URL gambar / link share Google Drive.</span>
+                  </div>
+                  <button type="button" class="btn btn-outline btn-compact" id="adm-poster-clear-btn" hidden>Ikuti Kategori</button>
+                </div>
+                <input id="adm-poster-custom" type="url" placeholder="https://.../poster.jpg atau https://drive.google.com/file/d/.../view">
+                <p id="adm-poster-hint" class="table-sub">Kosongkan URL dan pilih "Ikuti Kategori" untuk memakai foto bawaan kategori. Jika memakai link Google Drive, pastikan akses file diset ke "Anyone with the link".</p>
+                <div id="adm-poster-gallery" class="poster-gallery-grid" role="group" aria-label="Galeri foto dan poster kampus"></div>
+              </div>
+
+              <div class="form-field">
+                <label for="adm-rundown">Rundown per Baris (opsional, format: Jam | Nama Sesi)</label>
+                <textarea id="adm-rundown" rows="3" placeholder="09.00 - 09.30 WIB | Registrasi Peserta&#10;09.30 - 11.30 WIB | Sesi Materi Utama"></textarea>
+              </div>
+
+              <div id="adm-overlap-warning" class="admin-overlap-warn" role="status" aria-live="polite"></div>
+
+              <div class="admin-actions-row">
+                <button type="submit" class="btn btn-accent" id="adm-submit-btn">Buka &amp; Simpan di Google Calendar</button>
+                <button type="button" class="btn btn-outline btn-danger-outline" id="adm-delete-btn" hidden>Hapus Jadwal Ini</button>
+                <button type="button" class="btn btn-outline" id="adm-copy-btn">Salin Deskripsi</button>
+                <button type="button" class="btn btn-outline" id="adm-ics-btn">Unduh Draft .ics</button>
+                <button type="button" class="btn btn-outline" id="adm-reset-btn">Reset Form</button>
+              </div>
+
+              <div id="adm-feedback" class="admin-feedback" role="status" aria-live="polite"></div>
+            </form>
+          </article>
+
+          <aside class="detail-panel">
+            <h3 class="footer-title">Pratinjau Kartu Event</h3>
+            <p class="table-sub" style="margin-bottom: 16px;">Tampilan kartu di Beranda dan Daftar Event saat jadwal sudah tersimpan di Google Calendar.</p>
+            <div class="admin-preview-card-wrap" id="adm-card-preview"></div>
+
+            <hr class="detail-divider">
+
+            <h3 class="footer-title">Format Deskripsi Google Calendar</h3>
+            <p class="table-sub" style="margin-bottom: 10px;">Jika admin mengedit jadwal langsung dari aplikasi Google Calendar di ponsel, gunakan tag baris berikut pada bagian deskripsi:</p>
+            <div class="form-field">
+              <label for="adm-details-output">Teks Deskripsi Siap Tempel</label>
+              <textarea id="adm-details-output" class="code-preview" readonly></textarea>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <dialog id="admin-quick-modal" class="tl-quick-dialog" aria-labelledby="qm-heading">
+      <div class="qm-card">
+        <div class="qm-head">
+          <div class="qm-title-group">
+            <h2 id="qm-heading" class="qm-title">Buat Event Baru</h2>
+            <span id="qm-draft-badge" class="tl-tag tl-tag--draft" hidden>Draft Lokal</span>
+          </div>
+          <button type="button" id="qm-close-btn" class="tl-icon-btn qm-close-btn" aria-label="Tutup dialog">&times;</button>
+        </div>
+
+        <form id="qm-form" class="qm-form" novalidate>
+          <div class="form-field">
+            <label for="qm-title">Judul Event *</label>
+            <input id="qm-title" type="text" required placeholder="Tambahkan judul kegiatan">
+          </div>
+
+          <div class="form-field">
+            <span class="qm-group-label" id="qm-cat-label">Kategori</span>
+            <div id="qm-cat-chips" class="qm-cat-chips" role="group" aria-labelledby="qm-cat-label"></div>
+          </div>
+
+          <label class="admin-check-row" for="qm-allday">
+            <input id="qm-allday" type="checkbox">
+            <span>Sepanjang hari</span>
+          </label>
+
+          <div class="admin-form-grid">
+            <div class="form-field">
+              <label for="qm-start-date">Tanggal Mulai *</label>
+              <input id="qm-start-date" type="date" required>
+            </div>
+            <div class="form-field">
+              <label for="qm-start-time">Jam Mulai</label>
+              <input id="qm-start-time" type="time">
+            </div>
+            <div class="form-field">
+              <label for="qm-end-date">Tanggal Selesai *</label>
+              <input id="qm-end-date" type="date" required>
+            </div>
+            <div class="form-field">
+              <label for="qm-end-time">Jam Selesai</label>
+              <input id="qm-end-time" type="time">
+            </div>
+          </div>
+
+          <div class="qm-duration-bar" id="qm-duration-bar">
+            <span class="qm-group-label">Sesuaikan durasi:</span>
+            <div class="qm-duration-btns">
+              <button type="button" class="btn btn-outline btn-compact" data-qm-dur="-15">-15m</button>
+              <button type="button" class="btn btn-outline btn-compact" data-qm-dur="15">+15m</button>
+              <button type="button" class="btn btn-outline btn-compact" data-qm-dur="30">+30m</button>
+              <button type="button" class="btn btn-outline btn-compact" data-qm-dur="60">+1 jam</button>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="qm-location">Lokasi</label>
+            <input id="qm-location" type="text" placeholder="Contoh: Auditorium Utama FTI">
+          </div>
+
+          <div class="form-field">
+            <label for="qm-description">Deskripsi Singkat</label>
+            <textarea id="qm-description" rows="2" placeholder="Ringkasan acara atau catatan panitia"></textarea>
+          </div>
+
+          <div class="form-field qm-poster-box" id="qm-poster-section">
+            <div class="qm-poster-bar">
+              <img id="qm-poster-preview-img" class="admin-poster-current__img" src="assets/img/fti-event-720.jpg" alt="Thumbnail event" width="80" height="56">
+              <div class="admin-poster-current__info">
+                <span class="qm-group-label">Thumbnail Event</span>
+                <span id="qm-poster-preview-label" class="table-sub">Mengikuti default kategori</span>
+              </div>
+              <div class="qm-poster-bar__actions">
+                <button type="button" class="btn btn-outline btn-compact" id="qm-poster-clear-btn" hidden>Reset</button>
+                <button type="button" class="btn btn-outline btn-compact" id="qm-poster-toggle-btn" aria-expanded="false" aria-controls="qm-poster-drawer">Ganti Foto</button>
+              </div>
+            </div>
+            <div id="qm-poster-drawer" class="qm-poster-drawer" hidden>
+              <input id="qm-poster-custom" type="url" placeholder="Tempel URL gambar atau link share Google Drive">
+              <p id="qm-poster-hint" class="table-sub">Untuk link Google Drive, pastikan akses diset ke "Anyone with the link".</p>
+              <div id="qm-poster-gallery" class="poster-gallery-grid poster-gallery-grid--compact" role="group" aria-label="Pilih foto thumbnail event"></div>
+            </div>
+          </div>
+
+          <div id="qm-overlap-warn" class="admin-overlap-warn" role="status" aria-live="polite"></div>
+          <p id="qm-sync-note" class="placeholder-note"></p>
+          <div id="qm-error" class="admin-feedback" role="alert"></div>
+
+          <div class="qm-actions">
+            <button type="submit" class="btn btn-accent" id="qm-save-btn">Simpan</button>
+            <a class="btn btn-outline" id="qm-gcal-link" href="https://calendar.google.com/" target="_blank" rel="noopener">Buka di Google Calendar</a>
+            <button type="button" class="btn btn-outline" id="qm-more-btn">Opsi Lengkap</button>
+            <button type="button" class="btn btn-outline btn-danger-outline" id="qm-delete-btn" hidden>Hapus</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <section class="content-section content-surface">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Daftar Jadwal Terbaca di Portal</h2>
+          </div>
+          <p>Periksa agenda yang sedang aktif tampil di halaman Beranda, Event, dan Kalender.</p>
+        </div>
+        <div id="admin-connected-list"></div>
+      </div>
+    </section>
+
+    <section class="content-section content-muted" id="admin-accounts-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Kelola Akses Akun Admin (Google SSO)</h2>
+          </div>
+          <p>Tambahkan atau cabut alamat email Google panitia yang diizinkan membuka panel admin ini.</p>
+        </div>
+
+        <div class="admin-workspace">
+          <article class="detail-panel">
+            <h3 class="footer-title">Daftar Akun Google Terdaftar</h3>
+            <p class="table-sub">Hanya akun Google di bawah ini yang dapat melewati gerbang login SSO panel admin.</p>
+            <div id="admin-accounts-list" class="admin-accounts-list"></div>
+          </article>
+
+          <aside class="detail-panel">
+            <h3 class="footer-title">Tambah Akun Admin Baru</h3>
+            <p class="table-sub">Masukkan alamat email Google rekan panitia (tersimpan di browser ini). Agar berlaku permanen di semua perangkat/Vercel, klik <strong>Salin ADMIN_EMAILS</strong> lalu tempel ke Environment Variables, dan beri akses <strong>Make changes to events</strong> di Google Calendar.</p>
+            <form class="reg-form" id="admin-add-account-form" novalidate>
+              <div class="form-field">
+                <label for="adm-new-admin-email">Email Google Admin *</label>
+                <input id="adm-new-admin-email" type="email" required placeholder="contoh: panitia.kampus@gmail.com">
+              </div>
+              <div class="admin-actions-row">
+                <button type="submit" class="btn btn-accent" id="adm-add-account-btn">Tambah Akun</button>
+                <button type="button" class="btn btn-outline btn-compact" id="adm-copy-env-emails-btn">Salin ADMIN_EMAILS (.env / Vercel)</button>
+              </div>
+              <div id="adm-account-feedback" class="admin-feedback" role="status" aria-live="polite"></div>
+            </form>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-surface" id="setup-gcal">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Panduan Aktivasi Google Calendar &amp; OAuth Admin</h2>
+          </div>
+          <p>Langkah konfigurasi satu kali untuk membaca jadwal publik dan mengaktifkan Create/Edit/Delete langsung dari panel admin.</p>
+        </div>
+
+        <div class="setup-steps">
+          <article class="setup-step">
+            <h3>1. Buat Kalender Publik Kampus</h3>
+            <p>Buka Google Calendar, buat kalender khusus (misalnya <strong>Event Kampus</strong>), lalu buka <strong>Settings &amp; sharing</strong> dan centang <strong>Make available to public</strong> (pilih <strong>See all event details</strong>).</p>
+          </article>
+          <article class="setup-step">
+            <h3>2. Salin Calendar ID &amp; API Key</h3>
+            <p>Salin <strong>Calendar ID</strong> dari Google Calendar dan buat <strong>API Key</strong> (batasi ke Google Calendar API) di Google Cloud Console, lalu tempel ke <code>calendarId</code> dan <code>apiKey</code> di <code>js/config.js</code>.</p>
+          </article>
+          <article class="setup-step">
+            <h3>3. Buat OAuth 2.0 Web Client ID</h3>
+            <p>Di Google Cloud Console, buka <strong>APIs &amp; Services &rarr; OAuth consent screen</strong> (tambahkan email panitia di <em>Test users</em>), lalu buat <strong>Credentials &rarr; OAuth client ID (Web application)</strong> dan daftarkan origin Live Server / GitHub Pages Anda.</p>
+          </article>
+          <article class="setup-step">
+            <h3>4. Isi oauthClientId di js/config.js</h3>
+            <p>Tempel Client ID berakhiran <code>.apps.googleusercontent.com</code> ke properti <code>oauthClientId</code> di <code>js/config.js</code>. Jalankan situs via Live Server atau GitHub Pages agar tombol <strong>Masuk dengan Google (Admin)</strong> aktif.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="assets/img/logo-event-kampus.png" alt="Logo-Website" width="40px">
+            <div class="brand-mark__text">
+              <span class="brand-mark__title"><span class="lang-id">Event Kampus</span><span class="lang-en">Campus Events</span></span>
+              <span class="brand-mark__sub"><span class="lang-id">Portal Kegiatan</span><span class="lang-en">Activity Portal</span></span>
+            </div>
+          </div>
+          <p>
+            <span class="lang-id">Dikembangkan oleh Kelompok Kerupuk Basah - 3 (Tugas PTI Pembuatan Web) menggunakan HTML, CSS, dan Vanilla JavaScript dengan sinkronisasi Google Calendar.</span>
+            <span class="lang-en">Built by Kelompok Kerupuk Basah - 3 with HTML, CSS, and Vanilla JavaScript synced with Google Calendar.</span>
+          </p>
+        </div>
+        <div>
+          <p class="footer-heading">Navigasi</p>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Daftar Event</a></li>
+            <li><a href="calendar.html">Kalender Bulanan</a></li>
+            <li><a href="about.html">Tentang &amp; Kontak</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-heading">Kontak &amp; LinkedIn</p>
+          <ul class="footer-links">
+            <li><a href="about.html#anggota">Agaphe Abel - Projek Leader</a></li>
+            <li><a href="about.html#anggota">Reza Dwi Saputra - Web Develop</a></li>
+            <li><a href="about.html#anggota">Ernest Viktor Syampe Limbong - System Analyst</a></li>
+            <li><a href="about.html#anggota">Welprina Grace Modole - Auditor &amp; Visual Designer</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Portal Event Kampus &middot; Kerupuk Basah - 3</span>
+        <span>Aset foto non-logo dari <a href="https://fti.uksw.edu/" target="_blank" rel="noopener">fti.uksw.edu</a> &amp; <a href="https://www.instagram.com/fti.uksw/" target="_blank" rel="noopener">@fti.uksw</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script async defer src="https://accounts.google.com/gsi/client"></script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/fallback-events.js"></script>
+  <script defer src="js/ics-helper.js"></script>
+  <script defer src="js/calendar-service.js"></script>
+  <script defer src="js/ui-common.js"></script>
+  <script defer src="js/timeline-view.js"></script>
+  <script defer src="js/page-admin.js"></script>
+</body>
+</html>

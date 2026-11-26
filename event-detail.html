@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Event Kampus | Portal Event Kampus</title>
+  <meta name="description" content="Detail agenda event kampus terhubung Google Calendar lengkap dengan unduh .ics dan pendaftaran.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo-event-kampus.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Manrope:wght@400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animation.css">
+</head>
+<body class="page-sky">
+  <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
+
+  <input class="sr-only" type="radio" name="site-lang" id="lang-ba" checked>
+  <input class="sr-only" type="radio" name="site-lang" id="lang-en">
+
+  <div class="grid-lines" aria-hidden="true">
+    <span class="grid-line grid-line--1"></span>
+    <span class="grid-line grid-line--2"></span>
+    <span class="grid-line grid-line--3"></span>
+    <span class="grid-line grid-line--4"></span>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <div class="nav-shell">
+        <a class="brand-mark" href="index.html">
+          <img src="assets/img/logo-event-kampus.png" alt="Logo-Website" width="40px">
+          <span class="brand-mark__text">
+            <span class="brand-mark__title">
+              <span class="lang-id">Event Kampus</span>
+              <span class="lang-en">Campus Events</span>
+            </span>
+            <span class="brand-mark__sub">
+              <span class="lang-id">Portal Kegiatan</span>
+              <span class="lang-en">Activity Portal</span>
+            </span>
+          </span>
+        </a>
+
+        <nav class="nav-desktop" aria-label="Navigasi utama">
+          <a class="nav-link" href="index.html">HOME</a>
+          <a class="nav-link nav-link--active" href="events.html">EVENT</a>
+          <a class="nav-link" href="calendar.html">
+            <span class="lang-id">KALENDER</span>
+            <span class="lang-en">CALENDAR</span>
+          </a>
+          <a class="nav-link" href="about.html">
+            <span class="lang-id">TENTANG</span>
+            <span class="lang-en">ABOUT</span>
+          </a>
+        </nav>
+
+        <div class="nav-actions">
+          <div class="lang-switch" role="group" aria-label="Pilih bahasa">
+            <label for="lang-ba">ID</label>
+            <label for="lang-en">EN</label>
+          </div>
+          <a class="btn-portal" href="events.html">
+            <span class="lang-id">Semua Event</span>
+            <span class="lang-en">All Events</span>
+          </a>
+          <label class="hamburger-btn" for="nav-drawer-toggle" aria-label="Buka menu navigasi">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16"/>
+            </svg>
+          </label>
+        </div>
+      </div>
+
+      <input class="nav-toggle-input" type="checkbox" id="nav-drawer-toggle" aria-label="Toggle menu">
+      <nav class="mobile-drawer" aria-label="Navigasi seluler">
+        <a href="index.html">HOME</a>
+        <a class="nav-link--active" href="events.html">EVENT</a>
+        <a href="calendar.html"><span class="lang-id">KALENDER</span><span class="lang-en">CALENDAR</span></a>
+        <a href="about.html"><span class="lang-id">TENTANG</span><span class="lang-en">ABOUT</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-banner">
+      <div class="wrap">
+        <h1 id="detail-title">Detail Event Kampus</h1>
+        <p id="detail-subtitle">Memuat rincian jadwal kegiatan dari sistem penjadwalan kampus.</p>
+      </div>
+    </section>
+
+    <section class="content-section content-surface">
+      <div class="wrap">
+        <div id="detail-state"></div>
+        <div id="detail-content"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="assets/img/logo-event-kampus.png" alt="Logo-Website" width="40px">
+            <div class="brand-mark__text">
+              <span class="brand-mark__title"><span class="lang-id">Event Kampus</span><span class="lang-en">Campus Events</span></span>
+              <span class="brand-mark__sub"><span class="lang-id">Portal Kegiatan</span><span class="lang-en">Activity Portal</span></span>
+            </div>
+          </div>
+          <p>
+            <span class="lang-id">Dikembangkan oleh Kelompok Kerupuk Basah - 3 (Tugas PTI Pembuatan Web) menggunakan HTML, CSS, dan Vanilla JavaScript dengan sinkronisasi Google Calendar.</span>
+            <span class="lang-en">Built by Kelompok Kerupuk Basah - 3 with HTML, CSS, and Vanilla JavaScript synced with Google Calendar.</span>
+          </p>
+        </div>
+        <div>
+          <p class="footer-heading">Navigasi</p>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Daftar Event</a></li>
+            <li><a href="calendar.html">Kalender Bulanan</a></li>
+            <li><a href="about.html">Tentang &amp; Kontak</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-heading">Kontak &amp; LinkedIn</p>
+          <ul class="footer-links">
+            <li><a href="about.html#anggota">Agaphe Abel - Projek Leader</a></li>
+            <li><a href="about.html#anggota">Reza Dwi Saputra - Web Develop</a></li>
+            <li><a href="about.html#anggota">Ernest Viktor Syampe Limbong - System Analyst</a></li>
+            <li><a href="about.html#anggota">Welprina Grace Modole - Auditor &amp; Visual Designer</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Portal Event Kampus &middot; Kerupuk Basah - 3</span>
+        <span>Aset foto non-logo dari <a href="https://fti.uksw.edu/" target="_blank" rel="noopener">fti.uksw.edu</a> &amp; <a href="https://www.instagram.com/fti.uksw/" target="_blank" rel="noopener">@fti.uksw</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="js/config.js"></script>
+  <script defer src="js/fallback-events.js"></script>
+  <script defer src="js/ics-helper.js"></script>
+  <script defer src="js/calendar-service.js"></script>
+  <script defer src="js/ui-common.js"></script>
+  <script defer src="js/page-detail.js"></script>
+</body>
+</html>

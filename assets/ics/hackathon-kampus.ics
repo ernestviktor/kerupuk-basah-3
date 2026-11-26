@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Portal Event Kampus//ID
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:hackathon-kampus-2026@kampus.example
+DTSTAMP:20261117T050000Z
+DTSTART:20261128T013000Z
+DTEND:20261128T100000Z
+SUMMARY:Hackathon Inovasi Kampus 2026
+LOCATION:Gedung Laboratorium Komputer Terpadu
+DESCRIPTION:Kompetisi pengembangan solusi digital antar mahasiswa selama satu hari penuh.
+END:VEVENT
+END:VCALENDAR

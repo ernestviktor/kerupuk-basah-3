@@ -1,0 +1,2676 @@
+/* Tombol utama & sekunder (minimal tap target 44px) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 12px 22px;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: #ffffff;
+  color: #0d0d0d;
+}
+
+.btn-primary:hover {
+  background-color: #e9f0ff;
+}
+
+.btn-accent {
+  background-color: var(--blue-primary);
+  color: #ffffff;
+}
+
+.btn-accent:hover {
+  background-color: var(--blue-deep);
+}
+
+.btn-outline {
+  background-color: var(--surface-card);
+  color: var(--ink-dark);
+  border-color: var(--border-dark);
+}
+
+.btn-outline:hover {
+  border-color: var(--blue-primary);
+  color: var(--blue-primary);
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  border: 1px solid var(--border-dark);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.22s ease, border-color 0.22s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--blue-primary);
+}
+
+.event-card__media {
+  position: relative;
+  aspect-ratio: 79 / 100;
+  overflow: hidden;
+  background-color: var(--blue-soft);
+}
+
+.event-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.event-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  flex: 1;
+}
+
+.event-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-badge);
+  font-family: var(--font-caption);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.badge--cat {
+  background-color: var(--blue-soft);
+  color: var(--blue-deep);
+}
+
+@media (prefers-color-scheme: dark) {
+  .badge--cat {
+    color: #b9cffd;
+  }
+}
+
+.badge--open {
+  background-color: var(--status-open-bg);
+  color: var(--status-open-ink);
+}
+
+.badge--soon {
+  background-color: var(--status-soon-bg);
+  color: var(--status-soon-ink);
+}
+
+.badge--closed {
+  background-color: var(--status-closed-bg);
+  color: var(--status-closed-ink);
+}
+
+.event-card__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.25;
+  min-height: 1 em;
+  color: var(--ink-dark);
+}
+
+.event-card__info {
+  font-family: var(--font-caption);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* EVENT DETAIL  */
+.event-card__cta {
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.event-card__cta .btn {
+  border-radius: 0;
+}
+
+/* Filter Kategori murni CSS dengan radio button + :has() */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.filter-input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-dark);
+  color: var(--ink-dark);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-chip:hover {
+  border-color: var(--blue-primary);
+}
+
+/* Status aktif chip filter (baik CSS :has maupun tombol JS) */
+.filter-chip.is-active,
+.events-scope:has(#cat-all:checked) label[for='cat-all'],
+.events-scope:has(#cat-seminar:checked) label[for='cat-seminar'],
+.events-scope:has(#cat-lomba:checked) label[for='cat-lomba'],
+.events-scope:has(#cat-workshop:checked) label[for='cat-workshop'],
+.events-scope:has(#cat-seni:checked) label[for='cat-seni'],
+.events-scope:has(#cat-ukm:checked) label[for='cat-ukm'] {
+  background-color: var(--blue-primary);
+  border-color: var(--blue-primary);
+  color: #ffffff;
+}
+
+/* Sembunyikan kartu yang tidak sesuai kategori terpilih */
+.events-scope:has(#cat-seminar:checked) .event-card:not([data-cat='seminar']),
+.events-scope:has(#cat-lomba:checked) .event-card:not([data-cat='lomba']),
+.events-scope:has(#cat-workshop:checked) .event-card:not([data-cat='workshop']),
+.events-scope:has(#cat-seni:checked) .event-card:not([data-cat='seni']),
+.events-scope:has(#cat-ukm:checked) .event-card:not([data-cat='ukm']) {
+  display: none;
+}
+
+/* Detail Event */
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+}
+
+.detail-panel {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-card);
+  padding: clamp(20px, 3vw, 32px);
+}
+
+.detail-poster {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  margin-bottom: 24px;
+  background-color: var(--blue-soft);
+}
+
+.detail-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rundown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.rundown-item {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-btn);
+  background-color: var(--surface-muted);
+}
+
+.rundown-time {
+  font-family: var(--font-caption);
+  font-weight: 500;
+  color: var(--blue-deep);
+}
+
+@media (prefers-color-scheme: dark) {
+  .rundown-time {
+    color: #9dc0ff;
+  }
+}
+
+.action-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.placeholder-note {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: var(--radius-badge);
+  background-color: var(--surface-muted);
+  border: 1px solid var(--border-dark);
+  font-family: var(--font-caption);
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+
+/* Formulir pendaftaran bawaan (HTML + CSS murni tanpa JavaScript) */
+.reg-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-family: var(--font-caption);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-dark);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--input-border);
+  background-color: var(--surface-white);
+  color: var(--ink-dark);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--ink-muted);
+  opacity: 1;
+}
+
+.form-field input:hover,
+.form-field select:hover,
+.form-field textarea:hover {
+  border-color: var(--blue-primary);
+}
+
+.form-field input[type='date'],
+.form-field input[type='time'] {
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 18px 18px;
+}
+
+.form-field input[type='date'] {
+  background-image: var(--icon-calendar);
+}
+
+.form-field input[type='time'] {
+  background-image: var(--icon-clock);
+}
+
+/* Sembunyikan gambar indikator bawaan Chromium tanpa mematikan klik picker di atas ikon SVG kita. */
+.form-field input[type='date']::-webkit-calendar-picker-indicator,
+.form-field input[type='time']::-webkit-calendar-picker-indicator {
+  box-sizing: content-box;
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Firefox sudah merender ikon picker mengikuti color-scheme: dark secara native. */
+@supports (-moz-appearance: none) {
+  .form-field input[type='date'],
+  .form-field input[type='time'] {
+    background-image: none;
+  }
+}
+
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.form-field textarea:focus-visible {
+  border-color: var(--blue-primary);
+}
+
+.form-field input:user-invalid,
+.form-field select:user-invalid {
+  border-color: #b42318;
+}
+
+.form-status {
+  display: none;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius-btn);
+  background-color: var(--status-open-bg);
+  color: var(--status-open-ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.form-status:target {
+  display: block;
+}
+
+/* Kartu anggota per-container di halaman Tentang & Beranda */
+.team-panel {
+  width: 100%;
+}
+
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+  margin-top: 24px;
+}
+
+.about-grid .member-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.member-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: clamp(16px, 2vw, 24px);
+  padding: clamp(18px, 2.2vw, 24px) clamp(20px, 2.5vw, 28px);
+  border-radius: var(--radius-card);
+  background-color: var(--surface-muted);
+  border: 1px solid var(--border-dark);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(17, 80, 239, 0.4);
+  box-shadow: 0 10px 24px rgba(11, 57, 184, 0.12);
+}
+
+.member-card__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.member-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.member-card__role {
+  font-family: var(--font-caption);
+  font-size: clamp(0.78rem, 0.9vw, 0.84rem);
+  color: var(--ink-muted);
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+.member-card__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.4vw, 1.35rem);
+  font-weight: 500;
+  color: var(--ink-dark);
+  line-height: 1.25;
+  margin: 2px 0 0 0;
+}
+
+.member-card__nim {
+  font-family: var(--font-caption);
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.member-card__media {
+  flex: 0 0 clamp(110px, 11vw, 126px);
+  width: clamp(110px, 11vw, 126px);
+  height: clamp(132px, 13vw, 150px);
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: var(--surface-card);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  align-self: center;
+}
+
+.member-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.member-card:hover .member-card__photo {
+  transform: scale(1.04);
+}
+
+.linkedin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: var(--radius-btn);
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-dark);
+  color: var(--ink-dark);
+  font-size: 0.85rem;
+  font-weight: 500;
+  align-self: flex-start;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.linkedin-link:hover {
+  border-color: #0a66c2;
+  color: #0a66c2;
+  transform: translateY(-1px);
+}
+
+.linkedin-link svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: #0a66c2;
+}
+
+@media (max-width: 820px) {
+  .member-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .member-card {
+    padding: 16px;
+    gap: 14px;
+  }
+  .member-card__media {
+    flex: 0 0 88px;
+    width: 88px;
+    height: 108px;
+    border-radius: 12px;
+  }
+  .member-card__name {
+    font-size: 1.15rem;
+  }
+}
+
+/* Daftar baris interaktif Kategori Event dengan indikator panah saat hover */
+.category-list {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  background-color: var(--surface-card);
+  border: 3px solid white;
+  overflow: hidden;
+}
+
+.category-row {
+  display: grid;
+  grid-template-columns: 36px 10fr auto;
+  align-items: center;
+  gap: 16px;
+  min-height: 68px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border-dark);
+  transition: background-color 0.2s ease;
+}
+
+.category-row:last-child {
+  border-bottom: 0;
+}
+
+.category-row:hover {
+  background-color: var(--blue-soft);
+}
+
+.category-row__idx {
+  font-family: var(--font-caption);
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--blue-primary);
+}
+
+@media (prefers-color-scheme: dark) {
+  .category-row__idx {
+    color: #9dc0ff;
+  }
+}
+
+.category-row__main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+}
+
+.category-row__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--ink-dark);
+}
+
+.category-row__desc {
+  font-family: var(--font-caption);
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+}
+
+.category-row__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  color: var(--ink-dark);
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.category-row:hover .category-row__arrow {
+  transform: translateX(4px);
+  background-color: var(--blue-primary);
+  border-color: var(--blue-primary);
+  color: #ffffff;
+}
+
+.category-row__arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Panel glassmorphism untuk Alur Pendaftaran dengan konektor panah */
+.flow-glass-panel {
+  padding: clamp(24px, 3.5vw, 36px);
+  border-radius: 5px;
+  background: var(--glass-panel-bg);
+  border: 3px solid white ;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.flow-timeline {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 4px;
+  background-color: var(--surface-card);
+  border: 3px solid rgb(207, 207, 207);
+  height: 100%;
+}
+
+.flow-step__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.flow-step__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: var(--radius-badge);
+  background-color: var(--blue-soft);
+  font-family: var(--font-caption);
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--blue-primary);
+}
+
+@media (prefers-color-scheme: dark) {
+  .flow-step__num {
+    color: #b9cffd;
+  }
+}
+
+.flow-step__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--ink-dark);
+}
+
+.flow-step__desc {
+  font-family: var(--font-caption);
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+}
+
+.flow-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue-primary);
+  padding-inline: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .flow-connector {
+    color: #86acfb;
+  }
+}
+
+.flow-connector svg {
+  width: 36px;
+  height: 20px;
+}
+
+@media (max-width: 920px) {
+  .flow-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-connector {
+    padding-block: 4px;
+  }
+
+  .flow-connector svg {
+    transform: rotate(90deg);
+  }
+}
+
+/* Bingkai galeri dokumentasi sejajar tanpa caption teks */
+.gallery-frame {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: 1px solid var(--border-dark);
+  background-color: var(--blue-soft);
+  aspect-ratio: 4 / 3;
+}
+
+.gallery-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.gallery-frame:hover img {
+  transform: scale(1.03);
+}
+
+.info-dl {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.info-dl dt {
+  font-family: var(--font-caption);
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+
+.info-dl dd {
+  margin: 2px 0 0;
+  font-weight: 500;
+}
+
+/* Tabel Kalender Bulanan */
+.calendar-wrap {
+  overflow-x: auto;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-card);
+}
+
+.calendar-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+}
+
+.calendar-table th,
+.calendar-table td {
+  border: 1px solid var(--border-dark);
+  padding: 12px;
+  vertical-align: top;
+  width: 14.28%;
+}
+
+.calendar-table th {
+  background-color: var(--surface-muted);
+  font-family: var(--font-caption);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+.calendar-table td {
+  height: 108px;
+}
+
+.cal-day {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.cal-has-event {
+  background-color: var(--blue-soft);
+}
+
+.cal-event-link {
+  display: block;
+  padding: 6px 8px;
+  border-radius: var(--radius-badge);
+  background-color: var(--blue-primary);
+  color: #ffffff;
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+.cal-event-link:hover {
+  background-color: var(--blue-deep);
+}
+
+/* Halaman Tentang & Kontak */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 3vw, 36px);
+}
+
+.map-frame {
+  width: 100%;
+  height: 320px;
+  border: 0;
+  border-radius: var(--radius-card);
+}
+
+@media (max-width: 860px) {
+  .detail-layout,
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rundown-item {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tombol ukuran ringkas dengan target sentuh tetap minimal 44px */
+.btn-compact {
+  min-height: 44px;
+  padding: 8px 14px;
+  font-size: 0.86rem;
+}
+
+.inline-link {
+  color: var(--blue-deep);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+/* Toolbar pencarian & filter status di Daftar Event */
+.events-toolbar {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr auto;
+  gap: 14px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.events-count {
+  font-family: var(--font-caption);
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  padding-bottom: 10px;
+  white-space: nowrap;
+}
+
+/* Banner status sumber data (Google Calendar Live vs Mode Lokal) */
+.mode-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 16px;
+  margin-bottom: 22px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-card);
+  color: var(--ink-dark);
+  font-family: var(--font-caption);
+  font-size: 0.88rem;
+}
+
+.mode-banner--live {
+  background-color: var(--status-open-bg);
+  color: var(--status-open-ink);
+  border-color: transparent;
+}
+
+.mode-banner--warn {
+  background-color: var(--status-soon-bg);
+  color: var(--status-soon-ink);
+  border-color: transparent;
+}
+
+.mode-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Status UI wajib: Loading, Empty, dan Error */
+.ui-state {
+  padding: 28px 24px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-card);
+  color: var(--ink-dark);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.ui-state__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.ui-state__desc {
+  font-size: 0.94rem;
+  color: var(--ink-muted);
+  max-width: 52ch;
+}
+
+.ui-state--error {
+  border-color: #b42318;
+}
+
+/* Kontrol Kalender Bulanan & Panel Agenda Terpilih */
+.calendar-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.calendar-nav-group,
+.calendar-action-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.view-toggle {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: var(--radius-btn);
+  background-color: var(--surface-muted);
+  border: 1px solid var(--border-dark);
+  gap: 4px;
+}
+
+.view-toggle .btn-compact {
+  border-color: transparent;
+  background-color: transparent;
+  color: var(--ink-dark);
+}
+
+.view-toggle .btn-compact.is-active {
+  background-color: var(--blue-primary);
+  color: #ffffff;
+}
+
+.cal-outside {
+  background-color: var(--surface-muted);
+}
+
+.cal-day-btn {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+.cal-today .cal-day {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-badge);
+  background-color: var(--blue-primary);
+  color: #ffffff;
+}
+
+.cal-selected {
+  outline: 2px solid var(--blue-primary);
+  outline-offset: -2px;
+}
+
+.cal-cell-events {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cal-event-btn {
+  border: 0;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  font-size: 0.78rem;
+  min-height: 44px;
+  padding: 8px 10px;
+}
+
+.agenda-panel {
+  margin-top: 24px;
+  padding: clamp(18px, 3vw, 26px);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-card);
+}
+
+.agenda-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.agenda-panel__head h3,
+.agenda-panel__empty h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.agenda-panel__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.agenda-panel__empty p {
+  color: var(--ink-muted);
+}
+
+.agenda-items,
+.agenda-list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.agenda-item,
+.agenda-list-row {
+  padding: 16px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.agenda-list-row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.agenda-item__head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.agenda-item__time,
+.agenda-item__meta {
+  font-family: var(--font-caption);
+  font-size: 0.86rem;
+  color: var(--ink-muted);
+}
+
+.agenda-item__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--ink-dark);
+}
+
+.agenda-item__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.detail-divider {
+  margin: 22px 0;
+  border: 0;
+  border-top: 1px solid var(--border-dark);
+}
+
+/* Ruang Kerja Halaman Admin (admin.html) */
+.admin-status-card {
+  padding: clamp(18px, 2.5vw, 24px);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-card);
+  margin-bottom: 24px;
+}
+
+.admin-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.admin-status-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.admin-status-meta {
+  font-family: var(--font-caption);
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+  margin-top: 4px;
+}
+
+.admin-status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin-workspace {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(20px, 3vw, 34px);
+  align-items: start;
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.admin-check-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+
+.admin-check-row input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--blue-primary);
+}
+
+.admin-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.admin-feedback {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-btn);
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: none;
+}
+
+.admin-feedback--ok {
+  display: block;
+  background-color: var(--status-open-bg);
+  color: var(--status-open-ink);
+}
+
+.admin-feedback--error {
+  display: block;
+  background-color: #fdeceb;
+  color: #8c1d18;
+}
+
+.code-preview {
+  width: 100%;
+  min-height: 180px;
+  padding: 12px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-muted);
+  color: var(--ink-dark);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.admin-preview-card-wrap {
+  max-width: 340px;
+}
+
+.admin-event-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-card);
+  background-color: var(--surface-card);
+}
+
+.admin-event-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+}
+
+.admin-event-table th,
+.admin-event-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border-dark);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.admin-event-table th {
+  background-color: var(--surface-muted);
+  font-family: var(--font-caption);
+  font-size: 0.84rem;
+  font-weight: 500;
+}
+
+.admin-event-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table-sub {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+
+/* Terapkan pada pembungkus di dalam <td> agar cell tabel tetap sejajar penuh */
+.table-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.setup-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.setup-step {
+  padding: 18px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.setup-step h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.setup-step code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-dark);
+  font-size: 0.84rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .inline-link {
+    color: #9dc0ff;
+  }
+
+  .admin-feedback--error {
+    background-color: #4b1818;
+    color: #ffc7c4;
+  }
+}
+
+@media (max-width: 900px) {
+  .events-toolbar,
+  .admin-workspace,
+  .setup-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 580px) {
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tambahan kontrol Edit, Hapus, & Deteksi Overlap pada Panel Admin */
+.admin-edit-banner {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 14px;
+  margin-top: 14px;
+  border-radius: var(--radius-btn);
+  background-color: var(--blue-soft);
+  border: 1px solid var(--blue-primary);
+  color: var(--ink-dark);
+  font-size: 0.9rem;
+}
+
+.admin-edit-banner.is-visible {
+  display: flex;
+}
+
+.admin-overlap-warn {
+  display: none;
+  padding: 12px 14px;
+  border-radius: var(--radius-btn);
+  background-color: var(--status-soon-bg);
+  color: var(--status-soon-ink);
+  border: 1px solid #d9822b;
+  font-size: 0.9rem;
+}
+
+.admin-overlap-warn.is-visible {
+  display: block;
+}
+
+.btn-danger-outline {
+  border-color: #b42318;
+  color: #8c1d18;
+}
+
+.btn-danger-outline:hover {
+  background-color: #b42318;
+  border-color: #b42318;
+  color: #ffffff;
+}
+
+/* Komponen Kalender Timeline Minggu/Hari ala Google Calendar */
+.timeline-shell {
+  display: grid;
+  grid-template-columns: 268px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.timeline-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tl-create-btn {
+  width: 100%;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.tl-sidebar-toggle {
+  display: none;
+  width: 100%;
+  justify-content: center;
+}
+
+.tl-sidebar-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tl-mini-cal,
+.tl-legend-box,
+.timeline-board {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-card);
+}
+
+.tl-mini-cal,
+.tl-legend-box {
+  padding: 16px;
+}
+
+.tl-mini-cal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tl-mini-cal__title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.tl-mini-cal__nav {
+  display: flex;
+  gap: 6px;
+}
+
+.tl-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-white);
+  color: var(--ink-dark);
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.tl-icon-btn:hover {
+  border-color: var(--accent-ui);
+  color: var(--accent-ui);
+}
+
+.tl-mini-cal__weekdays,
+.tl-mini-cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 3px;
+  text-align: center;
+}
+
+.tl-mini-cal__weekdays {
+  font-family: var(--font-caption);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  margin-bottom: 6px;
+}
+
+.mini-cal-day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 4px 2px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-btn);
+  background: transparent;
+  color: var(--ink-dark);
+  font-family: var(--font-caption);
+  font-size: 0.84rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.mini-cal-day.is-in-week {
+  background-color: var(--surface-muted);
+}
+
+.mini-cal-day:hover {
+  background-color: var(--blue-soft);
+  border-color: var(--border-dark);
+}
+
+.mini-cal-day.is-today {
+  border-color: var(--accent-ui);
+  font-weight: 500;
+}
+
+.mini-cal-day.is-selected {
+  background-color: var(--blue-primary);
+  border-color: var(--blue-primary);
+  color: #ffffff;
+}
+
+.mini-cal-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--accent-ui);
+  margin-top: 2px;
+}
+
+.mini-cal-day.is-selected .mini-cal-dot {
+  background-color: #ffffff;
+}
+
+.tl-legend-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.tl-legend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tl-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 6px 10px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-muted);
+  font-family: var(--font-caption);
+  font-size: 0.88rem;
+}
+
+.tl-legend-item input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--blue-primary);
+  flex-shrink: 0;
+}
+
+.tl-legend-swatch {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.tl-legend-label {
+  flex: 1;
+}
+
+.tl-legend-count {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+}
+
+.tl-overlap-legend {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-white);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-caption);
+  font-size: 0.84rem;
+  color: var(--ink-muted);
+}
+
+.tl-overlap-legend.is-alert {
+  background-color: #fdeceb;
+  border-color: #b42318;
+  color: #8c1d18;
+  font-weight: 500;
+}
+
+.tl-swatch--seminar { background-color: var(--cat-seminar-accent); }
+.tl-swatch--lomba { background-color: var(--cat-lomba-accent); }
+.tl-swatch--workshop { background-color: var(--cat-workshop-accent); }
+.tl-swatch--seni { background-color: var(--cat-seni-accent); }
+.tl-swatch--ukm { background-color: var(--cat-ukm-accent); }
+.tl-swatch--umum { background-color: var(--cat-umum-accent); }
+.tl-swatch--overlap { background-color: #b42318; }
+
+/* Papan Kalender Utama */
+.timeline-board {
+  overflow: hidden;
+  min-width: 0;
+}
+
+.tl-board-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: var(--surface-muted);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.tl-day-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tl-range-heading {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--ink-dark);
+  margin-left: 4px;
+}
+
+.tl-view-switch {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: var(--radius-btn);
+  background-color: var(--surface-white);
+  border: 1px solid var(--border-dark);
+  gap: 4px;
+}
+
+.tl-view-switch .btn-compact {
+  border-color: transparent;
+  background-color: transparent;
+  color: var(--ink-dark);
+}
+
+.tl-view-switch .btn-compact.is-active {
+  background-color: var(--blue-primary);
+  color: #ffffff;
+}
+
+.tl-board-subbar {
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border-dark);
+  background-color: var(--surface-card);
+}
+
+.tl-board-hint {
+  font-family: var(--font-caption);
+  font-size: 0.84rem;
+  color: var(--ink-muted);
+}
+
+.tl-empty-bar {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-dark);
+  background-color: var(--surface-muted);
+  color: var(--ink-dark);
+  font-family: var(--font-caption);
+  font-size: 0.86rem;
+}
+
+.tl-grid-scroll {
+  overflow: auto;
+  max-height: 620px;
+  position: relative;
+  background-color: var(--surface-card);
+}
+
+.tl-grid-canvas {
+  width: 100%;
+  user-select: none;
+}
+
+.tl-canvas--week {
+  min-width: 840px;
+}
+
+.tl-canvas--day {
+  min-width: 100%;
+}
+
+.tl-sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  background-color: var(--surface-card);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.tl-header-row,
+.tl-allday-row,
+.tl-grid-body {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+}
+
+.tl-gutter-corner {
+  position: sticky;
+  left: 0;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--surface-muted);
+  border-right: 1px solid var(--border-dark);
+  font-family: var(--font-caption);
+  font-size: 0.76rem;
+  color: var(--ink-muted);
+}
+
+.tl-col-headers,
+.tl-allday-cols,
+.tl-day-columns {
+  display: grid;
+}
+
+.tl-cols--week {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.tl-cols--day {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.tl-col-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+  padding: 6px;
+  border-right: 1px solid var(--border-dark);
+  background-color: var(--surface-card);
+}
+
+.tl-col-head:last-child {
+  border-right: 0;
+}
+
+.tl-col-head.is-today {
+  background-color: var(--surface-muted);
+}
+
+.tl-col-head__date {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 4px;
+  border: 0;
+  border-radius: var(--radius-btn);
+  background: transparent;
+  color: var(--ink-dark);
+}
+
+.tl-col-head__date:hover {
+  background-color: var(--blue-soft);
+}
+
+.tl-day-weekday {
+  font-family: var(--font-caption);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.tl-col-head__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 6px;
+  border-radius: 50%;
+  font-family: var(--font-caption);
+  font-size: 0.92rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.tl-col-head.is-today .tl-col-head__num {
+  background-color: var(--blue-primary);
+  color: #ffffff;
+}
+
+.tl-col-head.is-selected:not(.is-today) .tl-col-head__num {
+  border: 2px solid var(--accent-ui);
+}
+
+.tl-col-head__add {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  min-height: 44px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-btn);
+  background: transparent;
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.tl-col-head__add:hover {
+  border-color: var(--accent-ui);
+  background-color: var(--blue-soft);
+  color: var(--ink-dark);
+}
+
+.tl-allday-row {
+  border-top: 1px solid var(--border-dark);
+}
+
+.tl-allday-label {
+  padding: 6px 4px;
+  text-align: center;
+  font-size: 0.72rem;
+}
+
+.tl-allday-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px;
+  min-height: 46px;
+  border-right: 1px solid var(--border-dark);
+  background-color: var(--surface-card);
+}
+
+.tl-allday-cell:last-child {
+  border-right: 0;
+}
+
+.tl-allday-add-btn {
+  width: 100%;
+  min-height: 44px;
+  border: 1px dashed transparent;
+  border-radius: var(--radius-badge);
+  background: transparent;
+  color: transparent;
+  font-size: 0.95rem;
+}
+
+.tl-allday-add-btn:hover,
+.tl-allday-add-btn:focus-visible {
+  border-color: var(--accent-ui);
+  background-color: var(--blue-soft);
+  color: var(--ink-dark);
+}
+
+.tl-allday-pill {
+  min-height: 44px;
+  padding: 6px 8px;
+  border-radius: var(--radius-badge);
+  border: 1px solid var(--border-dark);
+  border-left-width: 4px;
+  color: var(--ink-dark);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tl-allday-pill.is-draft {
+  border-style: dashed;
+}
+
+.tl-time-gutter {
+  position: sticky;
+  left: 0;
+  z-index: 5;
+  background-color: var(--surface-card);
+  border-right: 1px solid var(--border-dark);
+}
+
+.tl-time-label {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border-dark);
+  font-family: var(--font-caption);
+  font-size: 0.76rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-muted);
+}
+
+.tl-time-label:last-child {
+  border-bottom: 0;
+}
+
+.tl-day-col {
+  position: relative;
+  border-right: 1px solid var(--border-dark);
+  user-select: none;
+}
+
+.tl-day-col:last-child {
+  border-right: 0;
+}
+
+.tl-day-col.is-today {
+  background-color: rgba(17, 80, 239, 0.04);
+}
+
+.tl-day-col.is-interactive {
+  cursor: crosshair;
+}
+
+.tl-day-guides {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.tl-hour-guide {
+  position: relative;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.tl-hour-guide::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: 1px dashed var(--border-dark);
+  opacity: 0.55;
+}
+
+.tl-hour-guide:last-child {
+  border-bottom: 0;
+}
+
+.tl-day-events {
+  position: relative;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tl-now-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--now-line);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.tl-now-dot {
+  position: absolute;
+  left: -5px;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--now-line);
+}
+
+.tl-event-wrap {
+  position: absolute;
+  pointer-events: auto;
+  z-index: 3;
+}
+
+.tl-event-wrap.is-dragging-source {
+  opacity: 0.35;
+}
+
+.tl-event-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2px;
+  padding: 5px 8px 10px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  border-left-width: 4px;
+  color: var(--ink-dark);
+  font: inherit;
+  text-align: left;
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+
+.tl-day-col.is-interactive .tl-event-card {
+  cursor: grab;
+}
+
+body.tl-is-dragging,
+body.tl-is-dragging .tl-event-card {
+  cursor: grabbing !important;
+  user-select: none;
+}
+
+.tl-event-card:hover {
+  border-color: var(--accent-ui);
+}
+
+.tl-event-card.is-compact {
+  padding: 3px 6px;
+  gap: 0;
+}
+
+.tl-cat--seminar {
+  background-color: var(--cat-seminar-bg);
+  border-left-color: var(--cat-seminar-accent);
+}
+.tl-cat--lomba {
+  background-color: var(--cat-lomba-bg);
+  border-left-color: var(--cat-lomba-accent);
+}
+.tl-cat--workshop {
+  background-color: var(--cat-workshop-bg);
+  border-left-color: var(--cat-workshop-accent);
+}
+.tl-cat--seni {
+  background-color: var(--cat-seni-bg);
+  border-left-color: var(--cat-seni-accent);
+}
+.tl-cat--ukm {
+  background-color: var(--cat-ukm-bg);
+  border-left-color: var(--cat-ukm-accent);
+}
+.tl-cat--umum {
+  background-color: var(--cat-umum-bg);
+  border-left-color: var(--cat-umum-accent);
+}
+
+.tl-event-card.is-overlap {
+  border-color: #b42318;
+  border-left-color: #b42318;
+}
+
+.tl-event-card.is-draft {
+  border-style: dashed;
+}
+
+.tl-event-card__title {
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ink-dark);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.tl-event-card__badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.tl-tag {
+  padding: 1px 6px;
+  border-radius: 4px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-dark);
+  color: var(--ink-dark);
+  font-family: var(--font-caption);
+  font-size: 0.66rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.tl-tag--overlap {
+  background-color: #fdeceb;
+  border-color: #b42318;
+  color: #8c1d18;
+}
+
+.tl-tag--draft {
+  background-color: var(--status-soon-bg);
+  border-color: #9e5b00;
+  color: var(--status-soon-ink);
+}
+
+.tl-event-card__meta {
+  font-family: var(--font-caption);
+  font-size: 0.74rem;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Pegangan ubah durasi di tepi bawah kartu (desktop & sentuh) */
+.tl-event-resize {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  bottom: 0;
+  height: 12px;
+  cursor: ns-resize;
+  touch-action: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tl-event-resize::after {
+  content: '';
+  width: 26px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--accent-ui);
+  opacity: 0.35;
+  transition: opacity 0.15s ease;
+}
+
+.tl-event-wrap:hover .tl-event-resize::after,
+.tl-event-wrap:focus-within .tl-event-resize::after {
+  opacity: 0.85;
+}
+
+/* Pratinjau bayangan saat menarik slot baru atau memindahkan event */
+.tl-drag-ghost {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  z-index: 6;
+  pointer-events: none;
+  padding: 5px 8px;
+  border-radius: var(--radius-btn);
+  border: 2px solid var(--accent-ui);
+  background-color: var(--drag-ghost-bg);
+  color: var(--ink-dark);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: 0 6px 18px rgba(13, 25, 54, 0.18);
+}
+
+.tl-drag-ghost__title {
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.tl-drag-ghost__time {
+  font-family: var(--font-caption);
+  font-size: 0.74rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Notifikasi toast + tombol Urungkan (Undo) */
+.admin-toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--accent-ui);
+  background-color: var(--surface-card);
+  color: var(--ink-dark);
+  font-family: var(--font-caption);
+  font-size: 0.9rem;
+}
+
+.admin-toast[hidden] {
+  display: none;
+}
+
+.admin-toast.is-error {
+  border-color: #b42318;
+  background-color: #fdeceb;
+  color: #8c1d18;
+}
+
+.admin-toast__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Dialog cepat ala Google Calendar untuk membuat & mengedit jadwal di tempat */
+.tl-quick-dialog {
+  margin: auto;
+  width: min(580px, calc(100vw - 24px));
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-card);
+  background-color: var(--surface-card);
+  color: var(--ink-dark);
+  box-shadow: 0 22px 54px rgba(8, 17, 42, 0.34);
+  overflow: auto;
+}
+
+.tl-quick-dialog::backdrop {
+  background-color: rgba(8, 15, 36, 0.55);
+}
+
+.qm-card {
+  padding: 16px 20px 0;
+}
+
+.qm-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.qm-title-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.qm-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.qm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.qm-form .admin-form-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.qm-form .admin-check-row {
+  min-height: 36px;
+}
+
+.qm-form textarea {
+  min-height: 54px;
+}
+
+.qm-form .placeholder-note {
+  margin-top: 2px;
+}
+
+.qm-group-label {
+  font-family: var(--font-caption);
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--ink-dark);
+}
+
+.qm-cat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.qm-cat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 6px 11px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-muted);
+  color: var(--ink-dark);
+  font-family: var(--font-caption);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.qm-cat-chip.is-active {
+  border-color: var(--accent-ui);
+  background-color: var(--blue-soft);
+  box-shadow: inset 0 0 0 1px var(--accent-ui);
+}
+
+.qm-duration-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.qm-duration-bar[hidden] {
+  display: none;
+}
+
+.qm-duration-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.qm-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 12px 0 16px;
+  background-color: var(--surface-card);
+  border-top: 1px solid var(--border-dark);
+}
+
+/* Gerbang login Google SSO sebelum ruang kerja panel admin terbuka */
+.admin-auth-gate {
+  padding: clamp(44px, 8vw, 88px) 0;
+}
+
+.admin-auth-card {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-auth-card .badge {
+  align-self: flex-start;
+}
+
+.admin-auth-card__title {
+  margin: 4px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+/* Daftar akun Google admin yang diizinkan mengakses panel */
+.admin-accounts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.admin-account-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-muted);
+}
+
+.admin-account-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.admin-account-item__email {
+  font-weight: 500;
+  color: var(--ink-dark);
+  word-break: break-all;
+}
+
+.admin-account-item__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Indikator sisa sesi OAuth pada panel admin */
+.admin-session-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent-ui);
+  background-color: var(--blue-soft);
+  color: var(--ink-dark);
+  font-size: 0.78rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Pemilih thumbnail visual & pratinjau foto event pada form admin & modal cepat */
+.admin-poster-box {
+  padding: 14px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-muted);
+}
+
+.admin-poster-current {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-card);
+}
+
+.admin-poster-current__img {
+  width: 76px;
+  height: 54px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-muted);
+}
+
+.admin-poster-current__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1 1 160px;
+}
+
+.admin-poster-current__label {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-dark);
+}
+
+.poster-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  gap: 8px;
+  max-height: 236px;
+  overflow-y: auto;
+  padding: 2px;
+}
+
+.poster-gallery-grid--compact {
+  max-height: 184px;
+}
+
+.poster-thumb-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 44px;
+  padding: 6px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-card);
+  color: var(--ink-dark);
+  text-align: left;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.poster-thumb-btn:hover {
+  border-color: var(--accent-ui);
+}
+
+.poster-thumb-btn.is-active {
+  border-color: var(--accent-ui);
+  background-color: var(--blue-soft);
+  box-shadow: inset 0 0 0 1px var(--accent-ui);
+}
+
+.poster-thumb-btn__img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 5px;
+  object-fit: cover;
+  background-color: var(--surface-muted);
+}
+
+.poster-thumb-btn__label {
+  font-family: var(--font-caption);
+  font-size: 0.74rem;
+  line-height: 1.25;
+  color: var(--ink-dark);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.qm-poster-box {
+  padding: 10px 12px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface-muted);
+}
+
+.qm-poster-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.qm-poster-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.qm-poster-drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-dark);
+}
+
+.admin-table-event {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-table-thumb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border-dark);
+  border-radius: 6px;
+  background-color: var(--surface-muted);
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease;
+}
+
+.admin-table-thumb-btn:hover {
+  border-color: var(--accent-ui);
+}
+
+.admin-table-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.admin-table-thumb-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-dark);
+  background-color: var(--blue-soft);
+  color: var(--ink-dark);
+  font-family: var(--font-caption);
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+  .btn-danger-outline {
+    border-color: #ff8a80;
+    color: #ffc7c4;
+  }
+
+  .tl-overlap-legend.is-alert,
+  .tl-tag--overlap {
+    background-color: #4b1818;
+    border-color: #ff8a80;
+    color: #ffc7c4;
+  }
+
+  .tl-event-card.is-overlap {
+    border-color: #ff8a80;
+    border-left-color: #ff8a80;
+  }
+
+  .tl-day-col.is-today {
+    background-color: rgba(110, 163, 255, 0.08);
+  }
+
+  .admin-toast.is-error {
+    background-color: #4b1818;
+    border-color: #ff8a80;
+    color: #ffc7c4;
+  }
+}
+
+@media (max-width: 1024px) {
+  .timeline-shell {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .timeline-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .tl-sidebar-toggle {
+    display: inline-flex;
+  }
+
+  .tl-sidebar-panels {
+    display: none;
+  }
+
+  .tl-sidebar-panels.is-open {
+    display: flex;
+  }
+
+  .tl-col-head__add {
+    min-width: 44px;
+  }
+
+  .tl-canvas--week {
+    min-width: 930px;
+  }
+}
+
+@media (max-width: 580px) {
+  .poster-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

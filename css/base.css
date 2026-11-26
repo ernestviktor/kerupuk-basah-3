@@ -1,0 +1,306 @@
+@font-face {
+    font-family: 'Heavitas';
+    src: url('../assets/fonts/Heavitas.ttf') format(truetype);
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+
+    color-scheme: light;
+    
+    --sky-gradient: linear-gr
+    #1150ef 0%,
+    #135af3 30%,
+    #3c7af6 52%,
+    #76a2fa 64%,
+    #86acfb 70%,
+    #b9cffd 84%,
+    #ffffff 100%
+);
+--cloud-glow-1: radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 44%);
+--cloud-glow-2: radial-gradient(circle at 82% 24%, rgba(226, 238, 255, 0.28) 0%, rgba(255, 255, 255, 0) 48%);
+--cloud-glow-3: radial-gradient(circle at 48% 38%, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 42%);
+
+--blue-primary: #1150ef;
+--blue-deep: #0b39b8;
+--blue-soft: #e9f0ff;
+--accent-ui: #1150ef;
+--surface-white: #ffffff;
+--surface-card: #ffffff;
+--surface-muted: #eef4ff;
+--section-grad-surface: linear-gradient(180deg, #ffffff 0%, #f3f7ff 55%, #e7f0ff 100%);
+--section-grad-muted:
+    radial-gradient(circle at 16% 24%, rgba(17, 80, 239, 0.08) 0%, rgba(17, 80, 239, 0) 50%),
+    radial-gradient(circle at 84% 76%, rgba(60, 122, 246, 0.1) 0%, rgba(60, 122, 246, 0) 54%),
+    linear-gradient(180deg, #e7f0ff 0%, #dde9ff 50%, #f3f7ff 100%);
+--section-grad-cta:
+    radial-gradient(circle at 78% 50%, rgba(17, 80, 239, 0.12) 0%, rgba(17, 80, 239, 0) 58%),
+    linear-gradient(135deg, #e2ecff 0%, #f4f8ff 100%);
+--glass-panel-bg: rgba(255, 255, 255, 0.76);
+--glass-panel-border: white;
+/* Warna tulisan H1  */
+--ink-light: #ffffff;
+/* Warna Tulisan */
+--ink-dark: #0d0d0d;
+--ink-muted: #454f63;
+--border-light: rgba(255, 255, 255, 0.34);
+--border-dark: #dce4f5;
+--input-border: #7b89a4;
+
+--icon-calendar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230d0d0d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cpath d='M16 2v4M8 2v4M3 10h18'/%3E%3C/svg%3E");
+--icon-clock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230d0d0d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
+--grid-line: rgba(255, 255, 255, 0.28);
+
+  /* Status warna dengan kontras tinggi */
+--status-open-bg: #e6f6ec;
+--status-open-ink: #0e602e;
+--status-soon-bg: #fff4e0;
+--status-soon-ink: #7a4700;
+--status-closed-bg: #f1f3f7;
+--status-closed-ink: #475063;
+
+/* Warna kategori kalender (lolos WCAG AA untuk teks dan batas kartu) */
+--cat-seminar-bg: #e8f0fe;
+--cat-seminar-accent: #1150ef;
+--cat-lomba-bg: #e6f4ea;
+--cat-lomba-accent: #0e602e;
+--cat-workshop-bg: #e4f3f5;
+--cat-workshop-accent: #0b6477;
+--cat-seni-bg: #fef3e0;
+--cat-seni-accent: #9e5b00;
+--cat-ukm-bg: #eef0fb;
+--cat-ukm-accent: #43499e;
+--cat-umum-bg: #eef1f6;
+--cat-umum-accent: #454f63;
+--now-line: #d92d20;
+--drag-ghost-bg: rgba(17, 80, 239, 0.16);
+
+  /* Tipografi */
+--font-display: 'Playfair Display', sans-serif;
+--font-sans: 'Archivo', system-ui, -apple-system, sans-serif;
+--font-caption: 'Manrope', system-ui, -apple-system, sans-serif;
+
+
+  /* Skala radius terstruktur (nested radius) */
+--radius-pill: 999px;
+--radius-card: 16px;
+--radius-btn: 8px;
+--radius-badge: 6px;
+
+  /* Tata letak */
+--wrap-max: 1280px;
+--gutter: clamp(20px, 4.8vw, 68px);
+--nav-height: 76px;
+}
+
+/* Mode gelap otomatis mengikuti preferensi sistem operasi */
+@media (prefers-color-scheme: dark) {
+:root {
+    /* WARNA BACKGROUND INDEX.HTML */
+    color-scheme: dark;
+    --sky-gradient: linear-gradient(
+        180deg,
+    #091dff 0%,
+    #0e31a3 28%,
+    #141fb8 48%,
+    #132463 68%,
+    #0d1424 85%,
+    #0b101b 100%
+    );
+    --surface-white: #0b101b;
+    --surface-card: #121c33;
+    --surface-muted: #162340;
+    --section-grad-surface:
+    radial-gradient(circle at 82% 18%, rgba(60, 122, 246, 0.14) 0%, rgba(60, 122, 246, 0) 48%),
+    linear-gradient(180deg, #0b101b 0%, #0f1b38 52%, #0b1328 100%);
+    --section-grad-muted:
+    radial-gradient(circle at 16% 24%, rgba(60, 122, 246, 0.2) 0%, rgba(60, 122, 246, 0) 52%),
+    radial-gradient(circle at 86% 78%, rgba(17, 80, 239, 0.22) 0%, rgba(17, 80, 239, 0) 56%),
+    linear-gradient(180deg, #0d1936 0%, #12244f 50%, #0b1328 100%);
+    --section-grad-cta:
+    radial-gradient(circle at 78% 50%, rgba(60, 122, 246, 0.25) 0%, rgba(60, 122, 246, 0) 60%),
+    linear-gradient(135deg, #0f2252 0%, #0a142d 100%);
+    --glass-panel-bg: rgba(18, 31, 66, 0.62);
+    --glass-panel-border: rgba(134, 172, 251, 0.28);
+    --ink-dark: #f4f6fb;
+    --ink-muted: #b8c5de;
+    --border-dark: #253554;
+    --input-border: #526fa8;
+    --icon-calendar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f4f6fb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cpath d='M16 2v4M8 2v4M3 10h18'/%3E%3C/svg%3E");
+    --icon-clock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f4f6fb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
+    --blue-soft: #1b2a4a;
+    --accent-ui: #6ea3ff;
+    --status-open-bg: #113822;
+    --status-open-ink: #8ce9ad;
+    --status-soon-bg: #3b2808;
+    --status-soon-ink: #ffd080;
+    --status-closed-bg: #1e2638;
+    --status-closed-ink: #b6c2d9;
+
+    
+    --cat-seminar-bg: #1a2f5c;
+    --cat-seminar-accent: #6ea3ff;
+    --cat-lomba-bg: #133624;
+    --cat-lomba-accent: #5cd68d;
+    --cat-workshop-bg: #13333d;
+    --cat-workshop-accent: #5bc7d9;
+    --cat-seni-bg: #3b2910;
+    --cat-seni-accent: #f5b651;
+    --cat-ukm-bg: #242852;
+    --cat-ukm-accent: #9ea6ff;
+    --cat-umum-bg: #212938;
+    --cat-umum-accent: #9fb0cc;
+    --now-line: #ff8a80;
+    --drag-ghost-bg: rgba(110, 163, 255, 0.24);
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-dark);
+    background-color: var(--surface-white);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Latar halaman bergradien langit biru + efek awan halus */
+.page-sky {
+    background-image: var(--cloud-glow-1), var(--cloud-glow-2), var(--cloud-glow-3), var(--sky-gradient);
+    background-repeat: no-repeat;
+    background-size: 100% 1450px, 100% 1450px, 100% 1450px, 100% 1450px;
+    background-position: top center;
+}
+
+img,
+picture,
+svg,
+video { 
+    display: block;max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure {
+    margin: 0;
+}
+
+ul,
+ol {
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Pastikan atribut hidden tetap menyembunyikan elemen flex/grid seperti .btn */
+[hidden] {
+    display: none !important;
+}
+
+/* Kursor penunjuk untuk semua elemen interaktif */
+a[href],
+button,
+summary,
+select,
+label[for],
+input[type='radio'],
+input[type='checkbox'] {
+    cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled,
+[aria-disabled='true'] {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+
+/* Fokus keyboard yang jelas dan tidak tersembunyi */
+:focus-visible {
+    outline: 3px solid #ffbf47;
+    outline-offset: 3px;
+}
+
+/* HIDDEN TOMBOL RADIO UNTUK BAHASA */
+.skip-link {
+    position: absolute;
+    top: -120px;
+    left: 16px;
+    z-index: 2000;
+    padding: 12px 18px;
+    background: var(--ink-dark);
+    color: var(--surface-white);
+    font-weight: 500;
+    border-radius: var(--radius-btn);
+    transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+    top: 16px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Pengalih bahasa ID / EN murni CSS */
+.lang-en {
+    display: none;
+}
+
+body:has(#lang-en:checked) .lang-id {
+    display: none;
+}
+
+body:has(#lang-en:checked) .lang-en {
+    display: inline;
+}
+
+body:has(#lang-en:checked) .lang-block.lang-en {
+    display: block;
+}
+
+.lang-block.lang-en {
+    display: none;
+}
+

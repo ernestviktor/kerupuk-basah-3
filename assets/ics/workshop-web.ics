@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Portal Event Kampus//ID
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:workshop-web-2026@kampus.example
+DTSTAMP:20261117T050000Z
+DTSTART:20261130T060000Z
+DTEND:20261130T090000Z
+SUMMARY:Workshop HTML & CSS Tanpa Framework
+LOCATION:Ruang Studio Multimedia B2
+DESCRIPTION:Pelatihan praktik membangun antarmuka web responsif hanya dengan HTML5 dan CSS3.
+END:VEVENT
+END:VCALENDAR

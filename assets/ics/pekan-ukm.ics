@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Portal Event Kampus//ID
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pekan-ukm-2026@kampus.example
+DTSTAMP:20261117T050000Z
+DTSTART:20261112T030000Z
+DTEND:20261112T090000Z
+SUMMARY:Pekan Terbuka & Rekrutmen UKM Semester Ganjil
+LOCATION:Plaza Mahasiswa
+DESCRIPTION:Pameran stan unit kegiatan mahasiswa dan pendaftaran anggota baru.
+END:VEVENT
+END:VCALENDAR

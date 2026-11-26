@@ -1,0 +1,661 @@
+/* Layout: garis grid vertikal, navbar pill, hamburger, hero, dan footer.
+   R-07: Empat garis grid vertikal (4.8%, 35.45%, 64.7%, 95.2%) menjadi penanda struktur kolom dari hero hingga footer.
+   R-10: Efek blur (backdrop-filter) dibatasi pada 2 elemen utama (.nav-desktop di hero dan .flow-glass-panel di alur pendaftaran). */
+
+/* Empat garis grid vertikal 1px di latar belakang (4.8%, 35.45%, 64.7%, 95.2%) */
+.grid-lines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.grid-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--grid-line);
+}
+
+.grid-line--1 { left: 4.8%; }
+.grid-line--2 { left: 35.45%; }
+.grid-line--3 { left: 64.7%; }
+.grid-line--4 { left: 95.2%; }
+
+/* Kontainer utama sejajar dengan garis luar */
+.wrap {
+  width: 100%;
+  max-width: var(--wrap-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  position: relative;
+  z-index: 2;
+}
+
+/* Header & Navbar Pill (mengalir alami di atas halaman agar tidak menutupi konten saat digulir) */
+.site-header {
+  position: relative;
+  z-index: 100;
+  padding-block: 16px;
+}
+
+.nav-shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* NAV BAR ADMIN*/
+
+.brand-mark {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 7px;
+  min-height: 44px;
+  border-radius: 6px;
+  background: rgb(35 59 129);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--ink-light);
+  white-space: nowrap;
+  flex-shrink: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.brand-mark:hover {
+  background-color: rgba(11, 30, 84, 0.92);
+  border-color: rgba(255, 255, 255, 0.56);
+}
+
+/* Indikator loading border saat logo ditahan untuk masuk panel admin */
+.brand-hold-ring {
+  position: absolute;
+  inset: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  display: block;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.14s ease;
+}
+
+.brand-mark.is-holding .brand-hold-ring,
+.brand-mark.is-hold-complete .brand-hold-ring {
+  opacity: 1;
+}
+
+.brand-mark.is-holding,
+.brand-mark.is-holding:hover {
+  background: rgb(35 59 129);
+  border-color: transparent;
+}
+
+.brand-mark.is-hold-complete {
+  background: rgb(35 59 129);
+  border-color: transparent;
+}
+
+.brand-hold-ring__track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.28);
+  stroke-width: 2px;
+}
+
+.brand-hold-ring__progress {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.brand-mark__icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.brand-mark__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.brand-mark__title {
+  font-family: 'Heavitas';
+  font-weight: 500;
+  font-size: clamp(0.95rem, 1.9vw, 1.1rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+}
+
+.brand-mark__sub {
+  font-family: var(--font-caption);
+  font-weight: 500;
+  font-size: 0.64rem;
+  line-height: 1.1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #dce7ff;
+}
+
+/* Di navbar, ubin logo memakai putih editorial agar kontras terhadap pil biru tua. */
+.brand-mark .brand-tile { fill: #ffffff; }
+.brand-mark .brand-sq { fill: #0b2466; }
+.brand-mark .brand-sq-accent { fill: #1150ef; }
+
+/* Grup pill navbar desktop */
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px;
+  border-radius: 12px;
+  background: rgba(13, 35, 98, 0.38);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-light);
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: var(--ink-light);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+.nav-link--active {
+  background-color: #ffffff;
+  color: #0d0d0d;
+}
+
+.nav-link--active:hover {
+  background-color: #f0f4ff;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Pengalih bahasa ID / EN dengan radius kontrol */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--radius-btn);
+  background: rgba(13, 35, 98, 0.42);
+  border: 1px solid var(--border-light);
+}
+
+.lang-switch label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 36px;
+  padding: 0 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-light);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-switch label:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+body:has(#lang-ba:checked) .lang-switch label[for='lang-ba'],
+body:has(#lang-en:checked) .lang-switch label[for='lang-en'] {
+  background-color: #ffffff;
+  color: #0d0d0d;
+}
+
+/* Samakan hover pill aktif dengan .nav-link--active:hover agar kontras teks tetap tajam */
+body:has(#lang-ba:checked) .lang-switch label[for='lang-ba']:hover,
+body:has(#lang-en:checked) .lang-switch label[for='lang-en']:hover {
+  background-color: #f0f4ff;
+}
+
+.btn-portal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: var(--radius-btn);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: rgba(13, 35, 98, 0.38);
+  color: var(--ink-light);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-portal:hover {
+  background-color: #ffffff;
+  color: #0d0d0d;
+}
+
+/* Hamburger menu murni CSS (layar <= 860px) */
+.nav-toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.hamburger-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: rgba(13, 35, 98, 0.55);
+  border: 1px solid var(--border-light);
+  color: var(--ink-light);
+}
+
+.mobile-drawer {
+  display: none;
+  margin-top: 12px;
+  padding: 16px;
+  border-radius: var(--radius-card);
+  background: #0d2261;
+  border: 1px solid var(--border-light);
+  color: var(--ink-light);
+}
+
+.mobile-drawer a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 10px 14px;
+  border-radius: var(--radius-btn);
+  font-weight: 500;
+}
+
+.mobile-drawer a:hover,
+.mobile-drawer a.nav-link--active {
+  background-color: #ffffff;
+  color: #0d0d0d;
+}
+
+/* Hero Beranda (area biru atas) */
+.hero-section {
+  padding-top: clamp(28px, 5vw, 64px);
+  padding-bottom: clamp(48px, 7vw, 88px);
+  color: var(--ink-light);
+}
+
+.hero-top {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.hero-title {
+  font-family: 'Heavitas', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5.2vw, 4.8rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: normal;
+  color: white;
+}
+
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.hero-tagline {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.55;
+  color: #eef4ff;
+  max-width: 40ch;
+}
+
+.hero-visual {
+  margin-top: -20px;
+  border-radius: 10px;
+  overflow: visible;
+  width: 100%;
+}
+
+.hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter:
+    drop-shadow(2px 0 0 #ffffff)
+    drop-shadow(-2px 0 0 #ffffff)
+    drop-shadow(0 2px 0 #ffffff)
+    drop-shadow(0 -2px 0 #ffffff)
+    drop-shadow(2px 2px 0 #ffffff)
+    drop-shadow(-2px -2px 0 #ffffff)
+    drop-shadow(2px -2px 0 #ffffff)
+    drop-shadow(-2px 2px 0 #ffffff);
+}
+
+
+/* Header sub-halaman (Event, Kalender, Tentang, Detail) */
+.page-banner {
+  padding-top: clamp(24px, 4vw, 48px);
+  padding-bottom: clamp(32px, 5vw, 56px);
+  color: var(--ink-light);
+}
+
+.page-banner h1 {
+  font-family: 'Heavitas', sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.4vw, 4.6rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.page-banner p {
+  max-width: 56ch;
+  color: #eef4ff;
+  font-size: 1.05rem;
+}
+
+/* Bagian konten di bawah hero memakai gradien atmosferik terstruktur */
+.content-section {
+  padding-block: clamp(48px, 6vw, 84px);
+  color: var(--ink-dark);
+}
+
+.content-surface {
+  background-image: var(--section-grad-surface);
+  background-color: var(--surface-white);
+  color: var(--ink-dark);
+}
+
+.content-muted {
+  background-image: var(--section-grad-muted);
+  background-color: var(--surface-muted);
+  color: var(--ink-dark);
+  border-top: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: clamp(24px, 3.5vw, 40px);
+  flex-wrap: wrap;
+}
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
+  line-height: 1.05;
+  color: var(--ink-dark);
+}
+
+.section-head p {
+  color: var(--ink-muted);
+  max-width: 48ch;
+}
+
+/* Grid kartu event dengan lebar kolom sama agar tepi bawah foto sejajar */
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2.5vw, 28px);
+}
+
+/* Tata letak split kiri-kanan untuk Kategori Event agar berbeda dari grid kartu */
+.category-split {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: clamp(24px, 4.5vw, 64px);
+  align-items: start;
+}
+
+.category-intro h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
+  line-height: 1.05;
+  color: var(--ink-dark);
+  margin-bottom: 12px;
+}
+
+.category-intro p {
+  color: var(--ink-muted);
+  max-width: 38ch;
+}
+
+/* Galeri dokumentasi 3 kolom sejajar */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2.5vw, 28px);
+}
+
+/* Bagian ajakan (CTA) di bawah */
+.cta-band {
+  background-image: var(--section-grad-cta);
+  background-color: var(--surface-muted);
+  border-top: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding-block: clamp(44px, 6vw, 76px);
+}
+
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 28px;
+  align-items: center;
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--surface-white);
+  color: var(--ink-dark);
+  padding-block: clamp(40px, 5vw, 64px) 32px;
+  border-top: 1px solid var(--border-dark);
+  position: relative;
+  z-index: 2;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.7fr 1.6fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.footer-main-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+
+.footer-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.footer-brand .brand-mark__icon {
+  width: 30px;
+  height: 30px;
+}
+
+.footer-brand .brand-mark__title {
+  font-size: 1.25rem;
+  color: var(--ink-dark);
+}
+
+.footer-brand .brand-mark__sub {
+  color: var(--ink-muted);
+}
+
+/* Di footer terang, ubin logo memakai tinta biru tua di atas kertas putih. */
+.footer-brand .brand-tile { fill: #0b2466; }
+.footer-brand .brand-sq { fill: #ffffff; }
+.footer-brand .brand-sq-accent { fill: #86acfb; }
+
+@media (prefers-color-scheme: dark) {
+  .footer-brand .brand-tile { fill: #ffffff; }
+  .footer-brand .brand-sq { fill: #0b2466; }
+  .footer-brand .brand-sq-accent { fill: #1150ef; }
+}
+
+.footer-heading {
+  font-family: var(--font-caption);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  margin-bottom: 12px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  color: var(--ink-dark);
+  white-space: nowrap;
+}
+
+.footer-links a:hover {
+  color: var(--blue-primary);
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  padding-top: 20px;
+  border-top: 1px solid var(--border-dark);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--font-caption);
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+}
+
+/* Responsif <= 860px sesuai PRD */
+@media (max-width: 860px) {
+  .nav-desktop,
+  .nav-actions .btn-portal {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: inline-flex;
+  }
+
+  .nav-toggle-input:checked ~ .mobile-drawer {
+    display: block;
+  }
+
+  .hero-title {
+    white-space: normal;
+  }
+
+  .hero-top,
+  .cta-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  
+  /* Galeri unggulan menjadi baris geser horizontal dengan snap */
+  .featured-snap {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding-bottom: 12px;
+  }
+
+  .featured-snap > .event-card {
+    flex: 0 0 82%;
+    scroll-snap-align: start;
+  }
+
+  .event-grid:not(.featured-snap) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .category-split,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 580px) {
+  .brand-mark {
+    padding: 5px 10px 5px 6px;
+    gap: 8px;
+  }
+
+  .brand-mark__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .brand-mark__sub {
+    font-size: 0.58rem;
+  }
+
+  .event-grid:not(.featured-snap) {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    aspect-ratio: 4 / 3;
+  }
+}

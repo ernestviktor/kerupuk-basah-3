@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshop HTML &amp; CSS Tanpa Framework — Portal Event Kampus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo-event-kampus.png">
+  <meta name="description" content="Detail jadwal, rundown, pendaftaran, file .ics, dan tautan berbagi WhatsApp untuk Workshop HTML & CSS Tanpa Framework.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Manrope:wght@400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animation.css">
+</head>
+<body class="page-sky">
+  <a class="skip-link" href="#main-content">
+    <span class="lang-id">Lewati ke konten utama</span>
+    <span class="lang-en">Skip to main content</span>
+  </a>
+
+  <input class="sr-only" type="radio" name="site-lang" id="lang-ba" checked>
+  <input class="sr-only" type="radio" name="site-lang" id="lang-en">
+
+  <div class="grid-lines" aria-hidden="true">
+    <span class="grid-line grid-line--1"></span>
+    <span class="grid-line grid-line--2"></span>
+    <span class="grid-line grid-line--3"></span>
+    <span class="grid-line grid-line--4"></span>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <div class="nav-shell">
+        <a class="brand-mark" href="index.html">
+          <img src="assets/img/logo-event-kampus.png" alt="Logo-Website" width="40px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5Z"/>
+          </svg>
+          <span>EVENT KAMPUS</span>
+        </a>
+
+        <nav class="nav-desktop" aria-label="Navigasi utama">
+          <a class="nav-link" href="index.html">HOME</a>
+          <a class="nav-link nav-link--active" href="events.html">EVENT</a>
+          <a class="nav-link" href="calendar.html">
+            <span class="lang-id">KALENDER</span>
+            <span class="lang-en">CALENDAR</span>
+          </a>
+          <a class="nav-link" href="about.html">
+            <span class="lang-id">TENTANG</span>
+            <span class="lang-en">ABOUT</span>
+          </a>
+        </nav>
+
+        <div class="nav-actions">
+          <div class="lang-switch" role="group" aria-label="Pilih bahasa">
+            <label for="lang-ba">ID</label>
+            <label for="lang-en">EN</label>
+          </div>
+          <a class="btn-portal" href="events.html">
+            <span class="lang-id">Semua Event</span>
+            <span class="lang-en">All Events</span>
+          </a>
+          <label class="hamburger-btn" for="nav-drawer-toggle" aria-label="Buka menu navigasi">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16"/>
+            </svg>
+          </label>
+        </div>
+      </div>
+
+      <input class="nav-toggle-input" type="checkbox" id="nav-drawer-toggle" aria-label="Toggle menu">
+      <nav class="mobile-drawer" aria-label="Navigasi seluler">
+        <a href="index.html">HOME</a>
+        <a class="nav-link--active" href="events.html">EVENT</a>
+        <a href="calendar.html"><span class="lang-id">KALENDER</span><span class="lang-en">CALENDAR</span></a>
+        <a href="about.html"><span class="lang-id">TENTANG</span><span class="lang-en">ABOUT</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-banner">
+      <div class="wrap">
+        <h1>
+          <span class="lang-id">Workshop HTML &amp; CSS Tanpa Framework</span>
+          <span class="lang-en">HTML &amp; CSS Workshop Without Frameworks</span>
+        </h1>
+        <p>
+          <span class="lang-id">Pelatihan praktik membangun antarmuka web responsif, aksesibel, dan ringan hanya dengan HTML5 dan CSS3.</span>
+          <span class="lang-en">Hands-on session on building responsive, accessible web interfaces using pure HTML5 and CSS3.</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section content-surface">
+      <div class="wrap detail-layout">
+        <article class="detail-panel">
+          <figure class="detail-poster">
+            <img src="assets/img/fti-event.jpeg" width="1380" height="1035" alt="Ruang kegiatan untuk Workshop HTML dan CSS FTI UKSW" loading="eager" decoding="async" data-source="client" data-subject="workshop">
+          </figure>
+          <h2 class="footer-title">
+            <span class="lang-id">Deskripsi &amp; Rundown Acara</span>
+            <span class="lang-en">Description &amp; Schedule</span>
+          </h2>
+          <p>
+            <span class="lang-id">Peserta mempraktikkan CSS Grid, selector :has(), menu hamburger tanpa JavaScript, serta pengujian kontras warna dan ukuran layar ponsel.</span>
+            <span class="lang-en">Participants practice CSS Grid, :has() selectors, JS-free mobile drawers, and responsive contrast checks.</span>
+          </p>
+
+          <div class="rundown-list">
+            <div class="rundown-item">
+              <span class="rundown-time">13.00 - 13.45 WIB</span>
+              <span>
+                <span class="lang-id">Struktur semantik HTML5 dan variabel CSS</span>
+                <span class="lang-en">Semantic HTML5 structure and CSS custom properties</span>
+              </span>
+            </div>
+            <div class="rundown-item">
+              <span class="rundown-time">13.45 - 15.00 WIB</span>
+              <span>
+                <span class="lang-id">Tata letak Grid, Flexbox, dan filter CSS :has()</span>
+                <span class="lang-en">Grid, Flexbox layouts, and CSS :has() filtering</span>
+              </span>
+            </div>
+            <div class="rundown-item">
+              <span class="rundown-time">15.00 - 16.00 WIB</span>
+              <span>
+                <span class="lang-id">Uji responsif 360px - 1440px dan publikasi GitHub Pages</span>
+                <span class="lang-en">Responsive testing (360px - 1440px) and GitHub Pages deploy</span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="detail-panel">
+          <h2 class="footer-title">
+            <span class="lang-id">Informasi &amp; Pendaftaran</span>
+            <span class="lang-en">Details &amp; Registration</span>
+          </h2>
+          <dl class="info-dl">
+            <div>
+              <dt><span class="lang-id">Tanggal &amp; Waktu</span><span class="lang-en">Date &amp; Time</span></dt>
+              <dd>30 November 2026 &middot; 13.00 - 16.00 WIB</dd>
+            </div>
+            <div>
+              <dt><span class="lang-id">Lokasi</span><span class="lang-en">Venue</span></dt>
+              <dd>Ruang Studio Multimedia B2</dd>
+            </div>
+            <div>
+              <dt><span class="lang-id">Biaya</span><span class="lang-en">Fee</span></dt>
+              <dd><span class="lang-id">Gratis (bawa laptop masing-masing)</span><span class="lang-en">Free (bring your own laptop)</span></dd>
+            </div>
+            <div>
+              <dt><span class="lang-id">Kontak Panitia</span><span class="lang-en">Contact</span></dt>
+              <dd><a href="mailto:panitia@eventkampus.example">panitia@eventkampus.example</a></dd>
+            </div>
+          </dl>
+
+          <div class="action-stack">
+            <a class="btn btn-outline" href="assets/ics/workshop-web.ics" download>
+              <span class="lang-id">Unduh Kalender (.ics)</span>
+              <span class="lang-en">Download Calendar (.ics)</span>
+            </a>
+            <a class="btn btn-outline" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Workshop+HTML+%26+CSS+Tanpa+Framework&amp;dates=20261130T060000Z/20261130T090000Z&amp;location=Ruang+Studio+Multimedia+B2" target="_blank" rel="noopener">
+              <span class="lang-id">Simpan ke Google Calendar</span>
+              <span class="lang-en">Add to Google Calendar</span>
+            </a>
+            <a class="btn btn-outline" href="https://wa.me/?text=Yuk%20ikut%20Workshop%20HTML%20%26%20CSS%20Tanpa%20Framework%20pada%2030%20November%202026!" target="_blank" rel="noopener">
+              <span class="lang-id">Bagikan via WhatsApp</span>
+              <span class="lang-en">Share via WhatsApp</span>
+            </a>
+          </div>
+
+          <hr style="margin: 22px 0; border: 0; border-top: 1px solid var(--border-dark);">
+          <h3 class="footer-title">
+            <span class="lang-id">Formulir Pendaftaran</span>
+            <span class="lang-en">Registration Form</span>
+          </h3>
+          <!-- // TODO: sambungkan action formulir ke backend / form connector -->
+          <form class="reg-form" action="#daftar-terkirim" method="get">
+            <div class="form-field">
+              <label for="reg-nama"><span class="lang-id">Nama Lengkap</span><span class="lang-en">Full Name</span></label>
+              <input id="reg-nama" name="nama" type="text" required placeholder="Nama lengkap mahasiswa">
+            </div>
+            <div class="form-field">
+              <label for="reg-nim">NIM</label>
+              <input id="reg-nim" name="nim" type="text" required placeholder="Contoh: 672024084">
+            </div>
+            <div class="form-field">
+              <label for="reg-email"><span class="lang-id">Email Kampus</span><span class="lang-en">Campus Email</span></label>
+              <input id="reg-email" name="email" type="email" required placeholder="nim@student.uksw.edu">
+            </div>
+            <div class="form-field">
+              <label for="reg-wa"><span class="lang-id">Nomor WhatsApp</span><span class="lang-en">WhatsApp Number</span></label>
+              <input id="reg-wa" name="whatsapp" type="tel" required placeholder="08xxxxxxxxxx">
+            </div>
+            <button class="btn btn-accent" type="submit">
+              <span class="lang-id">Kirim Pendaftaran</span>
+              <span class="lang-en">Submit Registration</span>
+            </button>
+          </form>
+          <div id="daftar-terkirim" class="form-status" role="status">
+            <span class="lang-id">Data formulir siap dikirim. [CONNECTOR PENDING] Koneksi backend pendaftaran akan dihubungkan pada tahap berikutnya.</span>
+            <span class="lang-en">Form data ready. [CONNECTOR PENDING] Backend registration connector will be wired in the next phase.</span>
+          </div>
+
+          <p class="placeholder-note">
+            <span class="lang-id">[DATA CONTOH] Formulir UI bawaan aktif; connector backend belum terhubung. Alamat .example adalah placeholder demo.</span>
+            <span class="lang-en">[SAMPLE DATA] Built-in UI form active; backend connector pending. The .example email is a demo placeholder.</span>
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+          <img src="assets/img/logo-event-kampus.png" alt="Logo-Website" width="40px">
+            <div class="brand-mark__text">
+              <span class="brand-mark__title"><span class="lang-id">Event Kampus</span><span class="lang-en">Campus Events</span></span>
+              <span class="brand-mark__sub"><span class="lang-id">Portal Kegiatan</span><span class="lang-en">Activity Portal</span></span>
+            </div>
+          </div>
+          <p>
+            <span class="lang-id">Dikembangkan oleh Kelompok Kerupuk Basah - 3 (Tugas PTI Pembuatan Web) menggunakan HTML, CSS, dan Vanilla JavaScript dengan sinkronisasi Google Calendar.</span>
+            <span class="lang-en">Built by Kelompok Kerupuk Basah - 3 with HTML, CSS, and Vanilla JavaScript synced with Google Calendar.</span>
+          </p>
+        </div>
+        <div>
+          <p class="footer-heading">Navigasi</p>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Daftar Event</a></li>
+            <li><a href="calendar.html">Kalender Bulanan</a></li>
+            <li><a href="about.html">Tentang &amp; Kontak</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-heading">Kontak &amp; LinkedIn</p>
+          <ul class="footer-links">
+            <li><a href="about.html#anggota">Agaphe Abel - Projek Leader</a></li>
+            <li><a href="about.html#anggota">Reza Dwi Saputra - Web Develop</a></li>
+            <li><a href="about.html#anggota">Ernest Viktor Syampe Limbong - System Analyst</a></li>
+            <li><a href="about.html#anggota">Welprina Grace Modole - Auditor &amp; Visual Designer</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Portal Event Kampus &middot; Kerupuk Basah - 3</span>
+        <span>Aset foto non-logo dari <a href="https://fti.uksw.edu/" target="_blank" rel="noopener">fti.uksw.edu</a> &amp; <a href="https://www.instagram.com/fti.uksw/" target="_blank" rel="noopener">@fti.uksw</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="js/config.js"></script>
+  <script defer src="js/calendar-service.js"></script>
+  <script defer src="js/ui-common.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+/* Animations: keyframes CSS murni untuk garis grid, navbar, judul, hero, dan kartu. */
+
+/* Garis grid vertikal tumbuh dari atas (1.6 detik) */
+@keyframes gridGrow {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* Navbar turun bertahap saat halaman dimuat */
+@keyframes navFadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Judul muncul kata demi kata: blur 10px ke tajam */
+@keyframes wordReveal {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* Gambar hero naik perlahan dari bawah saat halaman dibuka */
+@keyframes heroRise {
+  0% {
+    opacity: 0;
+    transform: translateY(300px) scale(0.98);
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* Kartu naik bertahap (0.2s, 0.35s, 0.5s) */
+@keyframes cardRise {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.grid-lines .grid-line {
+  transform-origin: top center;
+  animation: gridGrow 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.nav-item-anim {
+  animation: navFadeDown 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.nav-delay-1 { animation-delay: 0.1s; }
+.nav-delay-2 { animation-delay: 0.22s; }
+.nav-delay-3 { animation-delay: 0.34s; }
+.nav-delay-4 { animation-delay: 0.46s; }
+.nav-delay-5 { animation-delay: 0.58s; }
+.nav-delay-6 { animation-delay: 0.65s; }
+
+.word-anim {
+  display: inline-block;
+  animation: wordReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.word-d1 { animation-delay: 0.15s; }
+.word-d2 { animation-delay: 0.28s; }
+.word-d3 { animation-delay: 0.41s; }
+.word-d4 { animation-delay: 0.54s; }
+.word-d5 { animation-delay: 0.67s; }
+
+
+/* LAMA WAKTU NAIK GAMBAR */
+.hero-visual-anim {
+  animation: heroRise 2s;
+}
+
+.card-anim {
+  animation: cardRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.card-d1 { animation-delay: 0.2s; }
+.card-d2 { animation-delay: 0.35s; }
+.card-d3 { animation-delay: 0.5s; }
+
+/* Animasi saat scroll memakai animation-timeline bila didukung browser */
+@supports (animation-timeline: view()) {
+  .scroll-reveal {
+    animation: cardRise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 26%;
+  }
+}
+
+/* Hormati preferensi pengurangan gerak pengguna */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
