@@ -57,34 +57,43 @@ if (!fs.existsSync(templatePath)) {
   throw new Error('Template js/config.example.js tidak ditemukan.');
 }
 
-// Bangun dist/js/config.js selalu dari template bersih agar kredensial lokal tidak ikut bocor jika env kosong.
-let configSource = fs.readFileSync(templatePath, 'utf8');
 const rawAdminEmails = getEnv('ADMIN_EMAILS');
-const allowedEmailHashes = rawAdminEmails
-  ? rawAdminEmails
-      .split(/[\s,;]+/)
-      .map((item) => item.trim().toLowerCase())
-      .filter(Boolean)
-      .map((email) => crypto.createHash('sha256').update(email, 'utf8').digest('hex'))
-  : [];
+const calendarIdEnv = getEnv('GCAL_CALENDAR_ID');
+const apiKeyEnv = getEnv('GCAL_API_KEY');
+const oauthClientIdEnv = getEnv('GCAL_OAUTH_CLIENT_ID');
+const hasLocalConfig = fs.existsSync(path.join(rootDir, 'js', 'config.js'));
+const hasAnyEnvOverride = Boolean(rawAdminEmails || calendarIdEnv || apiKeyEnv || oauthClientIdEnv);
 
-const replacements = {
-  calendarId: getEnv('GCAL_CALENDAR_ID'),
-  apiKey: getEnv('GCAL_API_KEY'),
-  oauthClientId: getEnv('GCAL_OAUTH_CLIENT_ID')
-};
+if (hasAnyEnvOverride || !hasLocalConfig) {
+  // Bangun dist/js/config.js dari template saat Env Var Vercel diisi atau js/config.js lokal tidak tersedia.
+  let configSource = fs.readFileSync(templatePath, 'utf8');
+  const allowedEmailHashes = rawAdminEmails
+    ? rawAdminEmails
+        .split(/[\s,;]+/)
+        .map((item) => item.trim().toLowerCase())
+        .filter(Boolean)
+        .map((email) => crypto.createHash('sha256').update(email, 'utf8').digest('hex'))
+    : [];
 
-for (const [field, value] of Object.entries(replacements)) {
-  const pattern = new RegExp(`(${field}:\\s*)'[^']*'`);
-  configSource = configSource.replace(pattern, () => `${field}: ${JSON.stringify(value)}`);
+  const replacements = {
+    calendarId: calendarIdEnv,
+    apiKey: apiKeyEnv,
+    oauthClientId: oauthClientIdEnv
+  };
+
+  for (const [field, value] of Object.entries(replacements)) {
+    const pattern = new RegExp(`(${field}:\\s*)'[^']*'`);
+    configSource = configSource.replace(pattern, () => `${field}: ${JSON.stringify(value)}`);
+  }
+
+  configSource = configSource.replace(
+    /allowedEmailHashes:\s*\[\s*\]/,
+    () => `allowedEmailHashes: ${JSON.stringify(allowedEmailHashes)}`
+  );
+
+  fs.writeFileSync(path.join(outDir, 'js', 'config.js'), configSource, 'utf8');
 }
 
-configSource = configSource.replace(
-  /allowedEmailHashes:\s*\[\s*\]/,
-  () => `allowedEmailHashes: ${JSON.stringify(allowedEmailHashes)}`
-);
-
-fs.writeFileSync(path.join(outDir, 'js', 'config.js'), configSource, 'utf8');
 fs.rmSync(path.join(outDir, 'js', 'config.example.js'), { force: true });
 
 console.log('Vercel build selesai: dist/ siap dideploy.');
