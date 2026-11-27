@@ -7,8 +7,8 @@ window.PortalKampus.CONFIG = {
   // Isi calendarId, apiKey, dan oauthClientId di js/config.js lokal atau lewat Vercel Environment Variables.
   // Biarkan kosong ('') jika ingin memakai data contoh lokal di js/fallback-events.js.
   googleCalendar: {
-    calendarId: '',
-    apiKey: '',
+    calendarId: 'c64ad70f4b23a46fd4b44275cf120781adc583021a499804c67eae226710bf9a@group.calendar.google.com',
+    apiKey: 'AIzaSyCqXccYdXekX492wdwUQFCTlDFvp5Nt0Ho',
     oauthClientId: '251576873112-too02l0gc7k03j46ja7amn6gp43v5b5r.apps.googleusercontent.com',
     timeZone: 'Asia/Jakarta',
     maxResults: 100,
@@ -18,7 +18,12 @@ window.PortalKampus.CONFIG = {
   // Kredensial SSO Google untuk gerbang panel admin (hash SHA-256 diisi otomatis dari Env Var ADMIN_EMAILS saat build Vercel).
   adminAuth: {
     allowedEmailHashes: [],
-    allowedEmails: ['ernestviktor23@gmail.com'],
+    allowedEmails: [
+      'ernestviktor23@gmail.com',
+      'rdwi57815@gmail.com',
+      'abelagaphe2007@gmail.com',
+      'welprina23@gmail.com'
+    ],
     maxSessionMinutes: 55
   },
 
