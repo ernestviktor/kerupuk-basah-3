@@ -9,7 +9,7 @@ window.PortalKampus.CONFIG = {
   googleCalendar: {
     calendarId: '',
     apiKey: '',
-    oauthClientId: '',
+    oauthClientId: '251576873112-too02l0gc7k03j46ja7amn6gp43v5b5r.apps.googleusercontent.com',
     timeZone: 'Asia/Jakarta',
     maxResults: 100,
     cacheMinutes: 5
@@ -17,7 +17,7 @@ window.PortalKampus.CONFIG = {
 
   // Kredensial SSO Google untuk gerbang panel admin (hash SHA-256 diisi otomatis dari Env Var ADMIN_EMAILS saat build Vercel).
   adminAuth: {
-    allowedEmailHashes: [],
+    allowedEmailHashes: ['ernestviktor23@gmail.com'],
     allowedEmails: [],
     maxSessionMinutes: 55
   },
