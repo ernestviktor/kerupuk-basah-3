@@ -18,7 +18,7 @@ window.PortalKampus.CONFIG = {
   // Kredensial SSO Google untuk gerbang panel admin (hash SHA-256 diisi otomatis dari Env Var ADMIN_EMAILS saat build Vercel).
   adminAuth: {
     allowedEmailHashes: [],
-    allowedEmails: [ernestviktor23@gmail.com],
+    allowedEmails: ['ernestviktor23@gmail.com'],
     maxSessionMinutes: 55
   },
 

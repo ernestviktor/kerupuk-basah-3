@@ -1,0 +1,12 @@
+{
+  "name": "campus-event-management",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-vercel.mjs",
+    "knip": "knip"
+  },
+  "devDependencies": {
+    "knip": "^6.45.1"
+  }
+}
