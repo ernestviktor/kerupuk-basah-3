@@ -1,3 +1,4 @@
+// DIBUAT MENGGUNAKAN AI
 // Layanan pengambilan dan pemrosesan jadwal dari Google Calendar API v3 serta fallback lokal.
 // Junior developer dapat mengubah format tag deskripsi atau aturan status di file ini.
 
