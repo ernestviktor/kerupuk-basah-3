@@ -1,3 +1,5 @@
+// DI BUAT MENGGUNAKAN AI // 
+
 // Skrip halaman Detail Event Dinamis (event-detail.html?id=...).
 
 window.PortalKampus = window.PortalKampus || {};

@@ -1,3 +1,5 @@
+// DI BUAT MENGGUNAKAN AI // 
+
 // Utilitas UI bersama: sinkronisasi bahasa ID/EN, navigasi keyboard, kartu event, dan status data.
 
 window.PortalKampus = window.PortalKampus || {};

@@ -1,3 +1,5 @@
+// DI BUAT MENGGUNAKAN AI // 
+
 // Helper untuk membuat tautan Google Calendar, file .ics, dan tautan berbagi WhatsApp.
 // Dipakai oleh halaman Kalender, Detail Event, dan Halaman Admin.
 

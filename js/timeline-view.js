@@ -1,3 +1,5 @@
+// DI BUAT MENGGUNAKAN AI // 
+
 // Komponen Timeline Minggu/Hari bergaya Google Calendar (dipakai bersama oleh calendar.html dan admin.html).
 // Junior developer dapat mengubah rentang jam dan kelipatan snap drag di js/config.js (CONFIG.timeline).
 

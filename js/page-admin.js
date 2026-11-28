@@ -1,3 +1,4 @@
+// DI BUAT MENGGUNAKAN AI // 
 // Skrip halaman Admin (admin.html): kalender drag & drop ala Google Calendar, Quick Modal, OAuth CRUD, & form lengkap.
 
 window.PortalKampus = window.PortalKampus || {};

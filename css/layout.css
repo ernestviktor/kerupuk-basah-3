@@ -156,6 +156,7 @@
 .nav-desktop {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   padding: 5px;
   border-radius: 12px;
@@ -589,7 +590,7 @@ body:has(#lang-en:checked) .lang-switch label[for='lang-en']:hover {
 
 /* Responsif <= 860px sesuai PRD */
 @media (max-width: 860px) {
-  .nav-desktop,
+  .nav-desktop ,
   .nav-actions .btn-portal {
     display: none;
   }

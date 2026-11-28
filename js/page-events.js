@@ -1,3 +1,5 @@
+// DI BUAT MENGGUNAKAN AI // 
+
 // Skrip halaman Daftar Event (events.html): pencarian, filter kategori, dan filter status.
 
 window.PortalKampus = window.PortalKampus || {};

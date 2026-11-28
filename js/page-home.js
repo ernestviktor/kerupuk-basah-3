@@ -1,3 +1,5 @@
+// DI BUAT MENGGUNAKAN AI // 
+
 // Skrip halaman Beranda (index.html): menampilkan 3 event terdekat di bagian Event Unggulan.
 
 window.PortalKampus = window.PortalKampus || {};

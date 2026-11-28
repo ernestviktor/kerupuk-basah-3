@@ -1,5 +1,6 @@
-// Skrip halaman Kalender (calendar.html): mendukung Grid Bulanan, Timeline Harian, dan Daftar Agenda.
+// DI BUAT MENGGUNAKAN AI // 
 
+// Skrip halaman Kalender (calendar.html): mendukung Grid Bulanan, Timeline Harian, dan Daftar Agenda.
 window.PortalKampus = window.PortalKampus || {};
 
 (function () {

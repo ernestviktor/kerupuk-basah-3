@@ -1,3 +1,5 @@
+// DI BUAT MENGGUNAKAN AI // 
+
 // Data contoh lokal sebagai cadangan otomatis saat Google Calendar API belum diatur atau sedang offline.
 // Format setiap item sama persis dengan hasil mapping dari Google Calendar API di js/calendar-service.js.
 
@@ -159,3 +161,5 @@ window.PortalKampus.FALLBACK_EVENTS = [
     htmlLink: ''
   }
 ];
+
+// DI BUAT MENGGUNAKAN AI // 
