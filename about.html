@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,8 +17,8 @@
 <body class="page-sky">
   <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
 
-  <input class="sr-only" type="radio" name="site-lang" id="lang-ba" checked>
-  <input class="sr-only" type="radio" name="site-lang" id="lang-en">
+  <input class="sr-only" type="radio" name="site-lang" id="lang-ba">
+  <input class="sr-only" type="radio" name="site-lang" id="lang-en" checked>
 
   <div class="grid-lines" aria-hidden="true">
     <span class="grid-line grid-line--1"></span>
@@ -78,8 +78,8 @@
       <nav class="mobile-drawer" aria-label="Navigasi seluler">
         <a href="index.html">HOME</a>
         <a href="events.html">EVENT</a>
-        <a href="calendar.html">KALENDER</a>
-        <a class="nav-link--active" href="about.html" aria-current="page">TENTANG</a>
+        <a href="calendar.html"><span class="lang-id">KALENDER</span><span class="lang-en">CALENDAR</span></a>
+        <a class="nav-link--active" href="about.html" aria-current="page"><span class="lang-id">TENTANG</span><span class="lang-en">ABOUT</span></a>
       </nav>
     </div>
   </header>
@@ -91,7 +91,10 @@
           <span class="lang-id">Tentang &amp; Kontak</span>
           <span class="lang-en">About &amp; Contact</span>
         </h1>
-        <p>Informasi penyelenggara, susunan anggota Kelompok Kerupuk Basah - 3, tautan LinkedIn, dan peta lokasi kegiatan kampus.</p>
+        <p>
+          <span class="lang-id">Informasi penyelenggara, susunan anggota Kelompok Kerupuk Basah - 3, tautan LinkedIn, dan peta lokasi kegiatan kampus.</span>
+          <span class="lang-en">Organizer information, members of Kelompok Kerupuk Basah - 3, LinkedIn links, and the campus event location map.</span>
+        </p>
       </div>
     </section>
 
@@ -99,7 +102,10 @@
       <div class="wrap about-grid">
         <article class="detail-panel" id="anggota">
           <h2 class="footer-title">Kelompok Kerupuk Basah - 3</h2>
-          <p>Website ini disusun untuk Tugas PTI Pembuatan Web menggunakan HTML, CSS, dan Vanilla JavaScript yang terintegrasi dengan Google Calendar.</p>
+          <p>
+            <span class="lang-id">Website ini disusun untuk Tugas PTI Pembuatan Web menggunakan HTML, CSS, dan Vanilla JavaScript yang terintegrasi dengan Google Calendar.</span>
+            <span class="lang-en">This website was created for a Web Development PTI assignment using HTML, CSS, and Vanilla JavaScript integrated with Google Calendar.</span>
+          </p>
 
           <!-- Masing-masing anggota berada di dalam container div sendiri dengan logo LinkedIn dan foto profil -->
           <div class="member-grid">
@@ -111,7 +117,7 @@
                     <span class="lang-en">Admin Panel &amp; Calendar</span>
                   </p>
                   <h3 class="member-card__name">Agaphe Abel</h3>
-                  <p class="member-card__nim">NIM: 672024084</p>
+                  <p class="member-card__nim"><span class="lang-id">NIM:</span><span class="lang-en">Student ID:</span> 672024084</p>
                 </div>
                 <a class="linkedin-link" href="https://www.linkedin.com/in/agaphe-abel?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener" aria-label="Buka profil LinkedIn Agaphe Abel">
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -133,7 +139,7 @@
                     <span class="lang-en">Events</span>
                   </p>
                   <h3 class="member-card__name">Reza Dwi Saputra</h3>
-                  <p class="member-card__nim">NIM: 672026080</p>
+                  <p class="member-card__nim"><span class="lang-id">NIM:</span><span class="lang-en">Student ID:</span> 672026080</p>
                 </div>
                 <a class="linkedin-link" href="https://www.linkedin.com/in/reza-dwi-765418450" target="_blank" rel="noopener" aria-label="Buka profil LinkedIn Reza Dwi Saputra">
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -152,7 +158,7 @@
                 <div class="member-card__info">
                   <p class="member-card__role">Home & GitHub</p>
                   <h3 class="member-card__name">Ernest Limbong</h3>
-                  <p class="member-card__nim">NIM: 672026071</p>
+                  <p class="member-card__nim"><span class="lang-id">NIM:</span><span class="lang-en">Student ID:</span> 672026071</p>
                 </div>
                 <a class="linkedin-link" href="https://www.linkedin.com/in/ernest-viktor-syampe-limbong-958030378" target="_blank" rel="noopener" aria-label="Buka profil LinkedIn Ernest Limbong">
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -174,7 +180,7 @@
                     <span class="lang-en">About &amp; Contact</span>
                   </p>
                   <h3 class="member-card__name">Wellprina Grace</h3>
-                  <p class="member-card__nim">NIM: 672026085</p>
+                  <p class="member-card__nim"><span class="lang-id">NIM:</span><span class="lang-en">Student ID:</span> 672026085</p>
                 </div>
                 <a class="linkedin-link" href="https://www.linkedin.com/in/welprina-grace-modole-undefined-25691444a?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener" aria-label="Buka profil LinkedIn Wellprina Grace">
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -191,11 +197,14 @@
 
           <dl class="info-dl" style="margin-top: 20px;">
             <div>
-              <dt>Email Panitia</dt>
+              <dt><span class="lang-id">Email Panitia</span><span class="lang-en">Committee Email</span></dt>
               <dd><a href="mailto:panitia@eventkampus.example">panitia@eventkampus.example</a></dd>
             </div>
           </dl>
-          <p class="placeholder-note">[DATA CONTOH] Alamat email .example adalah placeholder untuk demo tugas.</p>
+          <p class="placeholder-note">
+            <span class="lang-id">[DATA CONTOH] Alamat email .example adalah placeholder untuk demo tugas.</span>
+            <span class="lang-en">[EXAMPLE DATA] The .example email address is a placeholder for this assignment demo.</span>
+          </p>
         </article>
 
         <article class="detail-panel">
@@ -203,10 +212,10 @@
             <span class="lang-id">Lokasi Pusat Kegiatan Mahasiswa</span>
             <span class="lang-en">Student Activity Center Location</span>
           </h2>
-          <p style="margin-bottom: 16px;">Jalan Diponegoro, Salatiga, Jawa Tengah</p>
+          <p style="margin-bottom: 16px;">Diponegoro Street, Salatiga, Jawa Tengah</p>
           <iframe
             class="map-frame"
-            title="Peta lokasi kampus di OpenStreetMap"
+            title="Campus location map on OpenStreetMap"
             loading="lazy"
             src="https://www.openstreetmap.org/export/embed.html?bbox=110.488%2C-7.326%2C110.506%2C-7.314&amp;layer=mapnik"
           ></iframe>
@@ -266,14 +275,14 @@
                 <span class="lang-id">Nama / Organisasi</span>
                 <span class="lang-en">Name / Organization</span>
               </label>
-              <input id="fb-name" name="name" type="text" required placeholder="Ex: HMP / Mahasiswa FTI">
+              <input id="fb-name" name="name" type="text" required placeholder="Ex: FTI Student / Student Organization">
             </div>
             <div class="form-field">
               <label for="fb-message">
                 <span class="lang-id">Saran atau Pesan</span>
                 <span class="lang-en">Suggestion or Message</span>
               </label>
-              <textarea id="fb-message" name="message" rows="3" required placeholder="Tulis saran atau informasi event Anda di sini..."></textarea>
+              <textarea id="fb-message" name="message" rows="3" required placeholder="Suggestion or Message"></textarea>
             </div>
             <button type="submit" class="btn btn-accent">
               <span class="lang-id">Kirim Saran</span>
@@ -285,23 +294,6 @@
       </div>
     </section>
   </main>
-
-  <script>
-    (function () {
-      var form = document.getElementById('about-feedback-form');
-      var statusEl = document.getElementById('fb-status');
-      if (!form || !statusEl) return;
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var isEn = document.getElementById('lang-en') && document.getElementById('lang-en').checked;
-        statusEl.textContent = isEn
-          ? 'Thank you! Your feedback has been recorded.'
-          : 'Terima kasih! Saran Anda sudah diterima.';
-        statusEl.hidden = false;
-        form.reset();
-      });
-    })();
-  </script>
 
   <footer class="site-footer">
     <div class="wrap">
@@ -320,16 +312,16 @@
           </p>
         </div>
         <div>
-          <p class="footer-heading">Navigasi</p>
+          <p class="footer-heading"><span class="lang-id">Navigasi</span><span class="lang-en">Navigation</span></p>
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="events.html">Daftar Event</a></li>
-            <li><a href="calendar.html">Kalender Bulanan</a></li>
-            <li><a href="about.html">Tentang &amp; Kontak</a></li>
+            <li><a href="events.html"><span class="lang-id">Daftar Event</span><span class="lang-en">Event List</span></a></li>
+            <li><a href="calendar.html"><span class="lang-id">Kalender Bulanan</span><span class="lang-en">Monthly Calendar</span></a></li>
+            <li><a href="about.html"><span class="lang-id">Tentang &amp; Kontak</span><span class="lang-en">About &amp; Contact</span></a></li>
           </ul>
         </div>
         <div>
-          <p class="footer-heading">Kontak &amp; LinkedIn</p>
+          <p class="footer-heading"><span class="lang-id">Kontak &amp; LinkedIn</span><span class="lang-en">Contact &amp; LinkedIn</span></p>
           <ul class="footer-links">
             <li><a href="about.html#anggota">Agaphe Abel - Projek Leader</a></li>
             <li><a href="about.html#anggota">Reza Dwi Saputra - Web Develop</a></li>

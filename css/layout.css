@@ -41,6 +41,7 @@
 }
 
 .nav-shell {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -154,6 +155,9 @@
 
 /* Grup pill navbar desktop */
 .nav-desktop {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -467,7 +471,11 @@ body:has(#lang-en:checked) .lang-switch label[for='lang-en']:hover {
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(16px, 2.5vw, 28px);
+  gap: 100px;
+  width: 80.4vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Bagian ajakan (CTA) di bawah */
@@ -645,6 +653,12 @@ body:has(#lang-en:checked) .lang-switch label[for='lang-en']:hover {
   .category-split,
   .gallery-grid {
     grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    width: auto;
+    left: auto;
+    transform: none;
   }
 }
 
