@@ -7,7 +7,7 @@
 }
 
 :root {
-
+// TEMA TERANG
     color-scheme: light;
     
     --sky-gradient: linear-gradient(
@@ -98,8 +98,10 @@
 
 /* Mode gelap otomatis mengikuti preferensi sistem operasi */
 @media (prefers-color-scheme: dark) {
+
+// TEMA GELAP
 :root {
-    /* WARNA BACKGROUND INDEX.HTML */
+    
     color-scheme: dark;
     --sky-gradient: linear-gradient(
         180deg,
